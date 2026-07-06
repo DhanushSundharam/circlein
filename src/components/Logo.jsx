@@ -1,0 +1,43 @@
+import React from 'react';
+
+const Logo = ({ size = 32, className = '' }) => (
+  <svg 
+    width={size} 
+    height={size} 
+    viewBox="0 0 100 100" 
+    fill="none" 
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+    style={{ flexShrink: 0, minWidth: size, minHeight: size }}
+  >
+    {/* Outer Purple Circle */}
+    <circle cx="50" cy="50" r="45" stroke="#a855f7" strokeWidth="3.5" fill="none" />
+    
+    {/* Red Map Pin */}
+    <path d="M 50 48 C 65 30, 65 15, 50 15 C 35 15, 35 30, 50 48 Z" fill="#ef4444" />
+    <circle cx="50" cy="27" r="5" fill="#ffffff" />
+    
+    {/* Speed dashes */}
+    <line x1="25" y1="62" x2="31" y2="62" stroke="#0f172a" strokeWidth="3.5" strokeLinecap="round" />
+    <line x1="21" y1="68" x2="29" y2="68" stroke="#0f172a" strokeWidth="3.5" strokeLinecap="round" />
+    <line x1="23" y1="74" x2="30" y2="74" stroke="#0f172a" strokeWidth="3.5" strokeLinecap="round" />
+
+    {/* Car Chassis (Black) */}
+    {/* Connecting line between wheels */}
+    <line x1="43" y1="75" x2="57" y2="75" stroke="#0f172a" strokeWidth="3.5" strokeLinecap="round" />
+    
+    {/* Front hood */}
+    <path d="M 65 75 L 72 75 C 76 75, 77 69, 74 66 L 66 66" stroke="#0f172a" strokeWidth="3.5" strokeLinecap="round" fill="none"/>
+    
+    {/* Wheels */}
+    <circle cx="39" cy="75" r="4" stroke="#0f172a" strokeWidth="3.5" fill="#ffffff" />
+    <circle cx="61" cy="75" r="4" stroke="#0f172a" strokeWidth="3.5" fill="#ffffff" />
+
+    {/* Car Roof (Purple) */}
+    <path d="M 47 51 C 36 51, 36 64, 42 64" stroke="#a855f7" strokeWidth="3.5" strokeLinecap="round" fill="none"/>
+    <path d="M 53 51 C 64 51, 64 64, 58 64" stroke="#a855f7" strokeWidth="3.5" strokeLinecap="round" fill="none"/>
+    <line x1="50" y1="56" x2="50" y2="64" stroke="#a855f7" strokeWidth="3.5" strokeLinecap="round" />
+  </svg>
+);
+
+export default Logo;
