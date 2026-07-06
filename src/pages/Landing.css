@@ -280,21 +280,21 @@
 .user-dot {
   position: relative; z-index: 10;
   display: flex; align-items: center; justify-content: center;
-  width: 44px; height: 44px; border-radius: 50%;
+  width: 72px; height: 72px; border-radius: 50%;
   background: #ffffff; border: 2px solid #a855f7;
   box-shadow: 0 0 0 6px rgba(168,85,247,0.1), 0 8px 24px rgba(168,85,247,0.3);
 }
 .radar-pulse {
   position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-  width: 44px; height: 44px; border-radius: 50%;
+  width: 72px; height: 72px; border-radius: 50%;
   border: 2px solid #a855f7;
   animation: radarPing 3.5s cubic-bezier(0.1, 0.5, 0.8, 1) infinite;
 }
 .radar-pulse.delay { animation-delay: 1.75s; }
 
 @keyframes radarPing {
-  0% { width: 44px; height: 44px; opacity: 1; border-width: 3px; }
-  100% { width: 360px; height: 360px; opacity: 0; border-width: 0px; }
+  0% { width: 72px; height: 72px; opacity: 1; border-width: 3px; }
+  100% { width: 380px; height: 380px; opacity: 0; border-width: 0px; }
 }
 
 /* Driver Markers */

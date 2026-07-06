@@ -345,7 +345,7 @@ const Landing = () => {
               <div className="radar-pulse"></div>
               <div className="radar-pulse delay"></div>
               <div className="user-dot">
-                <Logo size={24} />
+                <Logo size={52} />
               </div>
             </div>
 
