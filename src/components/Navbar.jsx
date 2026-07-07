@@ -15,6 +15,7 @@ const NAV_LINKS = [
     ]
   },
   { label: 'Why Us',    href: '#why'      },
+  { label: 'Team',      href: '#team'     },
   { label: 'Contact',   href: '#contact'  },
 ];
 

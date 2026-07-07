@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { MapContainer, TileLayer } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
 import {
   Car, MapPin, Clock, ArrowRight, ChevronDown,
   Shield, Star, Phone, CheckCircle, Smile, Navigation, MessageCircle,
@@ -16,6 +18,9 @@ const WA_MESSAGE = encodeURIComponent('Hi! I want to book a driver through Circl
 const WA_LINK = `https://wa.me/${WA_NUMBER}?text=${WA_MESSAGE}`;
 const WA_QR = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(WA_LINK)}&color=6d28d9&bgcolor=ffffff&margin=12`;
 
+const WA_WASH_MESSAGE = encodeURIComponent('Hi! I want to book a vehicle wash through CircleInd.');
+const WA_WASH_LINK = `https://wa.me/${WA_NUMBER}?text=${WA_WASH_MESSAGE}`;
+
 const T = {
   en: {
     langBtn: 'தமிழ்',
@@ -23,7 +28,7 @@ const T = {
     heroTitle1: 'Your Car.',
     heroTitle2: 'Our Care.',
     heroTitle3: 'Your Comfort.',
-    heroSub: <>Tired of driving or washing your vehicle? Hire a professional driver to drive your own car, or book a premium all vehicle washing. Available specifically in <strong className="lp-gradient-text">Gobichettipalayam</strong>.</>,
+    heroSub: <>Tired of driving? Don't hustle. Hire a professional driver to drive your own car. Available specifically in <strong className="lp-gradient-text">Gobichettipalayam</strong>.</>,
     heroCta1: 'Book a Driver',
     heroCta2: 'How it works',
     cardName: 'Rahul M. — Driver Booked',
@@ -64,7 +69,7 @@ const T = {
 
     washTag: 'Official Partners',
     washTitle: 'Premium vehicle care.',
-    washSub: <>We've partnered with <strong style={{color: '#fff', fontWeight: 700}}>Gobichettipalayam’s</strong> finest washing stations to bring you premium care. From bikes to heavy lorries, our official partners ensure a sparkling showroom finish every time.</>,
+    washSub: <>We've partnered with <strong style={{color: '#fff', fontWeight: 700}}>Gobichettipalayam’s</strong> finest washing stations to bring you premium care. From bikes to heavy vehicles, our official partners ensure a sparkling showroom finish every time.</>,
     washVehicles: ['Bike', 'Car', 'Auto / Mini', 'Traveller', 'Heavy Vehicle'],
     washCards: [
       { icon: <Droplets size={28}/>, color: '#3b82f6', bg: 'rgba(59,130,246,0.1)', title: 'Exterior Wash', desc: 'Full pressure rinse, foam wash, hand scrub & squeegee dry.' },
@@ -76,25 +81,33 @@ const T = {
 
     customerBenefitsTitle: 'Why Ride With Us',
     customerBenefitsCards: [
-      { icon: <ShieldCheck size={24}/>, title: 'Verified & experienced drivers' },
-      { icon: <BadgeCheck size={24}/>, title: 'Driver ID card — badge number, photo, rating visible on request' },
-      { icon: <IndianRupee size={24}/>, title: 'Fixed, transparent pricing — no bargaining, no surge' },
-      { icon: <Star size={24}/>, title: 'Trusted local partner network' },
-      { icon: <Gift size={24}/>, title: 'Launch offers & rewards for early users' }
+      { icon: <ShieldCheck size={24}/>, title: 'Verified & Experienced Drivers' },
+      { icon: <BadgeCheck size={24}/>, title: 'Driver ID Card — Verified Badge, Photo, Rating & Skill Set' },
+      { icon: <IndianRupee size={24}/>, title: 'Fixed & Transparent Pricing' },
+      { icon: <IndianRupee size={24}/>, title: 'No Bargaining & No Surge' },
+      { icon: <Star size={24}/>, title: 'Trusted Local Partner Network' },
+      { icon: <Gift size={24}/>, title: 'Launch Offers & Rewards For Early Users' }
     ],
 
     driverBenefitsTitle: 'Why Drive With Us',
     driverBenefitsCards: [
-      { icon: <Clock size={24}/>, title: 'Flexible ride slots — choose your own timing' },
-      { icon: <MapPin size={24}/>, title: 'Pick rides by occasion/route preference' },
-      { icon: <IndianRupee size={24}/>, title: 'Fixed fare — guaranteed, no bargaining' },
-      { icon: <ShieldCheck size={24}/>, title: 'Guaranteed income structure' },
-      { icon: <Star size={24}/>, title: 'Top-rated bonus & performance rewards' },
-      { icon: <Shield size={24}/>, title: 'Basic insurance (rolling out soon)' },
-      { icon: <Gift size={24}/>, title: 'Extra perks beyond driving income' }
+      { icon: <Clock size={24}/>, title: 'Flexible Ride Slots — Choose Your Own Timing' },
+      { icon: <MapPin size={24}/>, title: 'Pick Rides By Occasion/Route Preference' },
+      { icon: <IndianRupee size={24}/>, title: 'Fixed Fare — Guaranteed, No Bargaining' },
+      { icon: <ShieldCheck size={24}/>, title: 'Guaranteed Income Structure' },
+      { icon: <Star size={24}/>, title: 'Top-Rated Bonus & Performance Rewards' },
+      { icon: <Shield size={24}/>, title: 'Basic Insurance (Rolling Out Soon)' },
+      { icon: <Gift size={24}/>, title: 'Extra Perks Beyond Driving Income' }
     ],
 
     trustBadges: ['Verified', 'No Bargaining', 'Fixed Price'],
+
+    teamTag: 'Our Team',
+    teamTitle: 'Meet the Founders',
+    teamMembers: [
+      { role: 'Founder & CEO', name: 'Thiyaaneswaran Thirumoorthy' },
+      { role: 'Co-founder & Head of Driver Operation', name: 'Thirumoorthy' }
+    ],
 
     faqTitle: 'Frequently Asked Questions',
     faqs: [
@@ -108,6 +121,7 @@ const T = {
       { q: 'How do I pay for the services?', a: 'You can pay directly via UPI (GPay, PhonePe), cash, or card after the service is completed.' },
       { q: 'Can I cancel my booking?', a: 'Yes, you can cancel your booking for free up to 1 hour before the scheduled time.' },
       { q: 'Is this service available outside Gobichettipalayam?', a: 'Currently, our services are exclusively available within Gobichettipalayam and surrounding nearby areas.' },
+      { q: 'What happens in the rare event of an accident?', a: 'For our drivers, we provide basic health and accident coverage to ensure their well-being. For the vehicle, since our professional drivers are operating your personal car, any vehicular damage must be covered under your car’s primary comprehensive insurance policy. We kindly request clients to ensure their vehicle is fully insured before booking a ride.' },
     ],
 
     footer: '© 2025 CircleInd. Your Car. Our Care. Your Comfort.',
@@ -118,7 +132,7 @@ const T = {
     heroTitle1: 'உங்கள் கார்.',
     heroTitle2: 'எங்கள் சிறந்த ஓட்டுனர்கள்.',
     heroTitle3: 'உங்கள் ஓய்வு.',
-    heroSub: <>ஓட்டுவதில் அல்லது வாகனம் கழுவுவதில் சோர்வாக இருக்கிறீர்களா? உங்கள் சொந்த காரை ஓட்ட ஒரு தொழில்முறை ஓட்டுனரை அமர்த்துங்கள், அல்லது சிறந்த அனைத்து வாகன கழுவும் சேவையை பெறுங்கள். குறிப்பாக <strong className="lp-gradient-text">கோபிசெட்டிபாளையம்</strong> பகுதியில் மட்டும்.</>,
+    heroSub: <>ஓட்டுவதில் சோர்வாக இருக்கிறீர்களா? சிரமப்பட வேண்டாம். உங்கள் சொந்த காரை ஓட்ட ஒரு தொழில்முறை ஓட்டுனரை அமர்த்துங்கள். குறிப்பாக <strong className="lp-gradient-text">கோபிசெட்டிபாளையம்</strong> பகுதியில் மட்டும்.</>,
     heroCta1: 'ஓட்டுனரை பதிவு செய்',
     heroCta2: 'எப்படி செயல்படுகிறது',
     cardName: 'ராகுல் மி. — ஓட்டுனர் பதிவு',
@@ -159,7 +173,7 @@ const T = {
 
     washTag: 'அதிகாரபூர்வ பார்ட்னர்',
     washTitle: 'சிறந்த வாகன பராமரிப்பு.',
-    washSub: <><strong style={{color: '#fff', fontWeight: 700}}>கோபிசெட்டிபாளையத்தின்</strong> சிறந்த வாஷிங் ஸ்டேஷன்களுடன் நாங்கள் அதிகாரபூர்வமாக இணைந்துள்ளோம். பைக் முதல் கனரக லாரிகள் வரை, உங்கள் வாகனத்திற்கு சிறப்பான கவனிப்பை வழங்கி, புதியது போல் மிளிரச் செய்கிறோம்.</>,
+    washSub: <><strong style={{color: '#fff', fontWeight: 700}}>கோபிசெட்டிபாளையத்தின்</strong> சிறந்த வாஷிங் ஸ்டேஷன்களுடன் நாங்கள் அதிகாரபூர்வமாக இணைந்துள்ளோம். பைக் முதல் கனரக வாகனங்கள் வரை, உங்கள் வாகனத்திற்கு சிறப்பான கவனிப்பை வழங்கி, புதியது போல் மிளிரச் செய்கிறோம்.</>,
     washVehicles: ['பைக்', 'கார்', 'ஆட்டோ / மினி', 'டிராவலர்', 'கனரக வாகனம்'],
     washCards: [
       { icon: <Droplets size={28}/>, color: '#3b82f6', bg: 'rgba(59,130,246,0.1)', title: 'வெளிப்புற கழுவுதல்', desc: 'முழு அழுத்தம், நுரை கழுவுதல், கை தேய்ப்பு.' },
@@ -169,27 +183,35 @@ const T = {
     ],
     washCta: 'வாகன கழுவுதல் பதிவு செய்',
 
-    customerBenefitsTitle: 'Why Ride With Us',
+    customerBenefitsTitle: 'ஏன் எங்களுடன் பயணிக்க வேண்டும்',
     customerBenefitsCards: [
-      { icon: <ShieldCheck size={24}/>, title: 'Verified & experienced drivers' },
-      { icon: <BadgeCheck size={24}/>, title: 'Driver ID card — badge number, photo, rating visible on request' },
-      { icon: <IndianRupee size={24}/>, title: 'Fixed, transparent pricing — no bargaining, no surge' },
-      { icon: <Star size={24}/>, title: 'Trusted local partner network' },
-      { icon: <Gift size={24}/>, title: 'Launch offers & rewards for early users' }
+      { icon: <ShieldCheck size={24}/>, title: 'சரிபார்க்கப்பட்ட & அனுபவமிக்க ஓட்டுனர்கள்' },
+      { icon: <BadgeCheck size={24}/>, title: 'ஓட்டுனர் அடையாள அட்டை — சரிபார்க்கப்பட்ட பேட்ஜ், புகைப்படம், மதிப்பீடு & திறன்' },
+      { icon: <IndianRupee size={24}/>, title: 'நிலையான & வெளிப்படையான கட்டணம்' },
+      { icon: <IndianRupee size={24}/>, title: 'பேரம் இல்லை & கூடுதல் கட்டணம் இல்லை' },
+      { icon: <Star size={24}/>, title: 'நம்பகமான உள்ளூர் பார்ட்னர் நெட்வொர்க்' },
+      { icon: <Gift size={24}/>, title: 'ஆரம்ப வாடிக்கையாளர்களுக்கு சிறப்பு சலுகைகள்' }
     ],
 
-    driverBenefitsTitle: 'Why Drive With Us',
+    driverBenefitsTitle: 'ஏன் எங்களுடன் ஓட்ட வேண்டும்',
     driverBenefitsCards: [
-      { icon: <Clock size={24}/>, title: 'Flexible ride slots — choose your own timing' },
-      { icon: <MapPin size={24}/>, title: 'Pick rides by occasion/route preference' },
-      { icon: <IndianRupee size={24}/>, title: 'Fixed fare — guaranteed, no bargaining' },
-      { icon: <ShieldCheck size={24}/>, title: 'Guaranteed income structure' },
-      { icon: <Star size={24}/>, title: 'Top-rated bonus & performance rewards' },
-      { icon: <Shield size={24}/>, title: 'Basic insurance (rolling out soon)' },
-      { icon: <Gift size={24}/>, title: 'Extra perks beyond driving income' }
+      { icon: <Clock size={24}/>, title: 'நெகிழ்வான நேரங்கள் — உங்கள் நேரத்தை நீங்களே தேர்வு செய்யுங்கள்' },
+      { icon: <MapPin size={24}/>, title: 'விருப்பத்திற்கு ஏற்ப சவாரிகளை தேர்வு செய்யலாம்' },
+      { icon: <IndianRupee size={24}/>, title: 'நிலையான கட்டணம் — உத்தரவாதமான வருமானம், பேரம் இல்லை' },
+      { icon: <ShieldCheck size={24}/>, title: 'உத்தரவாதமான வருமான அமைப்பு' },
+      { icon: <Star size={24}/>, title: 'சிறந்த மதிப்பீடுகளுக்கு போனஸ் & சலுகைகள்' },
+      { icon: <Shield size={24}/>, title: 'அடிப்படை காப்பீடு (விரைவில்)' },
+      { icon: <Gift size={24}/>, title: 'ஓட்டுனர் வருமானத்தை தாண்டி கூடுதல் நன்மைகள்' }
     ],
 
-    trustBadges: ['Verified', 'No Bargaining', 'Fixed Price'],
+    trustBadges: ['சரிபார்க்கப்பட்டவர்கள்', 'பேரம் இல்லை', 'நிலையான கட்டணம்'],
+
+    teamTag: 'எங்கள் அணி',
+    teamTitle: 'நிறுவனர்களை சந்தியுங்கள்',
+    teamMembers: [
+      { role: 'நிறுவனர் & CEO', name: 'Thiyaaneswaran Thirumoorthy' },
+      { role: 'இணை நிறுவனர் & ஓட்டுனர் செயல்பாட்டு தலைவர்', name: 'Thirumoorthy' }
+    ],
 
     faqTitle: 'அடிக்கடி கேட்கப்படும் கேள்விகள்',
     faqs: [
@@ -203,6 +225,7 @@ const T = {
       { q: 'எப்படி கட்டணம் செலுத்துவது?', a: 'சேவை முடிந்தவுடன் UPI (GPay, PhonePe) அல்லது ரொக்கமாக செலுத்தலாம்.' },
       { q: 'பதிவை ரத்து செய்ய முடியுமா?', a: 'ஆம், உங்கள் பயண நேரத்திற்கு 1 மணி நேரத்திற்கு முன்பு வரை இலவசமாக ரத்து செய்யலாம்.' },
       { q: 'இந்த சேவை கோபிசெட்டிபாளையத்திற்கு வெளியே கிடைக்குமா?', a: 'தற்போது, எங்கள் சேவைகள் கோபிசெட்டிபாளையம் மற்றும் அதனை சுற்றியுள்ள பகுதிகளில் மட்டுமே கிடைக்கிறது.' },
+      { q: 'எதிர்பாராத விதமாக விபத்து ஏற்பட்டால் என்ன நடக்கும்?', a: 'எங்கள் ஓட்டுனர்களுக்கு அடிப்படை சுகாதார மற்றும் விபத்து காப்பீடு வழங்கி அவர்களின் நலனை உறுதி செய்கிறோம். வாகனத்தைப் பொறுத்தவரை, எங்கள் ஓட்டுனர்கள் உங்கள் சொந்த காரை ஓட்டுவதால், வாகனத்திற்கு ஏற்படும் எந்தவொரு சேதமும் உங்கள் காரின் விரிவான காப்பீட்டுக் கொள்கையின் கீழ் (Comprehensive Insurance) ஈடுசெய்யப்பட வேண்டும். எனவே, முன்பதிவு செய்வதற்கு முன் உங்கள் வாகனம் முழுமையாக காப்பீடு செய்யப்பட்டுள்ளதா என்பதை உறுதி செய்யுமாறு அன்புடன் கேட்டுக்கொள்கிறோம்.' },
     ],
 
     footer: '© 2025 CircleInd. உங்கள் கார். எங்கள் அக்கறை. உங்கள் ஓய்வு.',
@@ -250,13 +273,21 @@ const Landing = () => {
 
       {/* ── HERO ────────────────────── */}
       <section id="home" className="lp-hero">
+        <div className="hero-map-bg">
+          <MapContainer style={{ height: '100%', width: '100%' }} center={[11.4546, 77.4357]} zoom={14} zoomControl={false} dragging={false} scrollWheelZoom={false} doubleClickZoom={false} touchZoom={false}>
+            <TileLayer
+              url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
+            />
+          </MapContainer>
+        </div>
+
         <div className="lp-blob lp-blob-1" />
         <div className="lp-blob lp-blob-2" />
         <div className="lp-blob lp-blob-3" />
 
         {/* ── SCATTERED FLOATING CARDS ── */}
         <div className="hero-floating-card fc-night-out">
-          <div className="icon-circle" style={{background:'rgba(168,85,247,0.1)',color:'#a855f7'}}>
+          <div className="icon-circle">
             <PartyPopper size={20} />
           </div>
           <div>
@@ -267,7 +298,7 @@ const Landing = () => {
         </div>
 
         <div className="hero-floating-card fc-wash-card">
-          <div className="icon-circle" style={{background:'rgba(59,130,246,0.1)',color:'#3b82f6'}}>
+          <div className="icon-circle">
             <Droplets size={20} />
           </div>
           <div>
@@ -278,7 +309,7 @@ const Landing = () => {
         </div>
 
         <div className="hero-floating-card fc-family">
-          <div className="icon-circle" style={{background:'rgba(16,185,129,0.1)',color:'#10b981'}}>
+          <div className="icon-circle">
             <Users size={20} />
           </div>
           <div>
@@ -289,7 +320,7 @@ const Landing = () => {
         </div>
 
         <div className="hero-floating-card fc-business">
-          <div className="icon-circle" style={{background:'rgba(99,102,241,0.1)',color:'#6366f1'}}>
+          <div className="icon-circle">
             <Briefcase size={20} />
           </div>
           <div>
@@ -300,7 +331,7 @@ const Landing = () => {
         </div>
 
         <div className="hero-floating-card fc-medical">
-          <div className="icon-circle" style={{background:'rgba(239,68,68,0.1)',color:'#ef4444'}}>
+          <div className="icon-circle">
             <HeartPulse size={20} />
           </div>
           <div>
@@ -506,7 +537,7 @@ const Landing = () => {
           </div>
 
           {/* CTA */}
-          <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="lp-btn-primary" style={{marginTop:'40px', alignSelf:'center'}}>
+          <a href={WA_WASH_LINK} target="_blank" rel="noopener noreferrer" className="lp-btn-primary" style={{marginTop:'40px', alignSelf:'center'}}>
             {t.washCta} <ArrowRight size={18} />
           </a>
 
@@ -570,6 +601,45 @@ const Landing = () => {
                 <div className="lp-why-icon">{c.icon}</div>
                 <h4 className="lp-why-title">{c.title}</h4>
                 <p className="lp-why-desc">{c.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── TEAM ──────────────────────── */}
+      <section id="team" className="lp-team reveal-on-scroll">
+        <div className="lp-team-inner">
+          <div className="lp-section-tag light" style={{textAlign:'center', display:'inline-block', margin:'0 auto 12px'}}>{t.teamTag}</div>
+          <h2 className="lp-section-title" style={{color: '#fff'}}>{t.teamTitle}</h2>
+          <div className="lp-team-grid">
+            {t.teamMembers.map((member, i) => (
+              <div key={i} className="lp-team-card">
+                <div className="lp-team-avatar">
+                  <User size={40} color="#6366f1" />
+                </div>
+                <h4 className="lp-team-name">{member.name}</h4>
+                <p className="lp-team-role">{member.role}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── FAQ ──────────────────────── */}
+      <section id="faq" className="lp-faq reveal-on-scroll">
+        <div className="lp-faq-inner">
+          <h2 className="lp-section-title">{t.faqTitle}</h2>
+          <div className="lp-faq-list">
+            {t.faqs.map((faq, i) => (
+              <div key={i} className={`lp-faq-item ${openFaq === i ? 'open' : ''}`} onClick={() => toggleFaq(i)}>
+                <div className="lp-faq-q">
+                  {faq.q}
+                  <ChevronDown size={20} className="lp-faq-icon" />
+                </div>
+                <div className="lp-faq-a">
+                  <div className="lp-faq-a-inner">{faq.a}</div>
+                </div>
               </div>
             ))}
           </div>
