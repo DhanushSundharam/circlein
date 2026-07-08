@@ -266,6 +266,15 @@ const Landing = () => {
 
   return (
     <div className="landing-page">
+      {/* ── SEO CONTENT BLOCK (visually hidden, crawlable by Google) ── */}
+      <div style={{position:'absolute',width:'1px',height:'1px',overflow:'hidden',clip:'rect(0,0,0,0)',whiteSpace:'nowrap'}} aria-hidden="true">
+        <h2>Gobi Driver Service — CircleInd</h2>
+        <p>CircleInd is the #1 driver hire service in Gobichettipalayam (Gobi), Tamil Nadu. Hire a verified, professional driver for your own car in Gobi. Driver on hire in Gobichettipalayam. Driver on call Gobichettipalayam. Personal driver Gobichettipalayam. Private driver Gobi. Driver service Gobi. Driver near me Gobichettipalayam. Driver agency Gobichettipalayam.</p>
+        <p>Book a driver in Gobichettipalayam for weddings, night outs, outstation trips, business travel, family trips, medical needs and daily commute. Wedding driver Gobichettipalayam. Night driver Gobi. Outstation driver Gobichettipalayam. Corporate driver Gobi. 24 hour driver Gobichettipalayam. Driver for party Gobichettipalayam. Driver for hospital Gobichettipalayam.</p>
+        <p>CircleInd offers verified drivers in Gobichettipalayam with fixed pricing and no bargaining. Experienced driver Gobichettipalayam. Safe driver Gobichettipalayam. Verified driver Gobichettipalayam. Driver for own car Gobichettipalayam. Cab driver hire Gobichettipalayam. Driver on demand Gobi. Driver for rent Gobichettipalayam.</p>
+        <p>Serving Gobichettipalayam, Gobi, Erode district, Tamil Nadu. Contact CircleInd via WhatsApp for instant driver booking. CircleInd driver booking. CircleInd Gobichettipalayam. circlein.in. CircleInd services. CircleInd verified driver. Driver hire Tamil Nadu.</p>
+      </div>
+
       <button aria-label="Toggle language" className="lang-toggle-btn" onClick={() => setLang(l => l === 'en' ? 'ta' : 'en')}>
         <Globe size={16} />
         {lang === 'en' ? 'தமிழ்' : 'English'}
