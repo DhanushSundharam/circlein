@@ -105,8 +105,8 @@ const T = {
     teamTag: 'Our Team',
     teamTitle: 'Meet the Founders',
     teamMembers: [
-      { role: 'Founder & CEO', name: 'Thiyaaneswaran Thirumoorthy' },
-      { role: 'Co-founder & Head of Driver Operation', name: 'Thirumoorthy' }
+      { role: 'Founder & CEO, Gobichettipalayam', name: 'Thiyaaneswaran Thirumoorthy' },
+      { role: 'Co-founder & Head of Driver Operation, Gobichettipalayam', name: 'Thirumoorthy' }
     ],
 
     faqTitle: 'Frequently Asked Questions',
@@ -209,8 +209,8 @@ const T = {
     teamTag: 'எங்கள் அணி',
     teamTitle: 'நிறுவனர்களை சந்தியுங்கள்',
     teamMembers: [
-      { role: 'நிறுவனர் & CEO', name: 'Thiyaaneswaran Thirumoorthy' },
-      { role: 'இணை நிறுவனர் & ஓட்டுனர் செயல்பாட்டு தலைவர்', name: 'Thirumoorthy' }
+      { role: 'நிறுவனர் & CEO, கோபிசெட்டிபாளையம்', name: 'Thiyaaneswaran Thirumoorthy' },
+      { role: 'இணை நிறுவனர் & ஓட்டுனர் செயல்பாட்டு தலைவர், கோபிசெட்டிபாளையம்', name: 'Thirumoorthy' }
     ],
 
     faqTitle: 'அடிக்கடி கேட்கப்படும் கேள்விகள்',
