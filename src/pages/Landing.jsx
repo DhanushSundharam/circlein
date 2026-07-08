@@ -347,25 +347,32 @@ const Landing = () => {
         </div>
 
         <div className="lp-hero-inner reveal-on-scroll">
-          <div className="lp-chip">
-            <span className="lp-chip-dot" />
+          <div className="lp-chip" role="note">
+            <span className="lp-chip-dot" aria-hidden="true" />
             {t.chip}
           </div>
 
-          <h1 className="lp-hero-title">
+          <h1 className="lp-hero-title" itemProp="name">
             {t.heroTitle1}<br />
             <span className="lp-gradient-text">{t.heroTitle2}</span><br />
             {t.heroTitle3}
           </h1>
 
-          <p className="lp-hero-sub">{t.heroSub}</p>
+          <p className="lp-hero-sub" itemProp="description">{t.heroSub}</p>
 
           <div className="lp-hero-cta">
-            <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="lp-btn-primary">
-              {t.heroCta1} <ArrowRight size={18} />
+            <a
+              href={WA_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="lp-btn-primary"
+              title="Book a professional driver on WhatsApp — CircleInd Gobichettipalayam"
+              aria-label="Book a Driver via WhatsApp"
+            >
+              {t.heroCta1} <ArrowRight size={18} aria-hidden="true" />
             </a>
-            <a href="#how" className="lp-btn-ghost">
-              {t.heroCta2} <ChevronDown size={18} />
+            <a href="#how" className="lp-btn-ghost" aria-label="See how CircleInd works">
+              {t.heroCta2} <ChevronDown size={18} aria-hidden="true" />
             </a>
           </div>
 
@@ -412,52 +419,52 @@ const Landing = () => {
       </section>
 
       {/* ── WHO IS THIS FOR ─────────── */}
-      <section id="about" className="lp-who reveal-on-scroll">
+      <section id="about" className="lp-who reveal-on-scroll" aria-label="Who is CircleInd for?">
         <div className="lp-who-inner">
-          <div className="lp-section-tag" style={{textAlign:'center', display:'block'}}>{t.whoTitle}</div>
+          <p className="lp-section-tag" style={{textAlign:'center', display:'block'}}>{t.whoTitle}</p>
           <h2 className="lp-section-title">{t.whoSub}</h2>
-          <div className="lp-who-grid">
+          <div className="lp-who-grid" role="list">
             {t.whoCards.map((c, i) => (
-              <div key={i} className="lp-who-card">
-                <div className="lp-who-emoji">{c.icon}</div>
+              <article key={i} className="lp-who-card" role="listitem">
+                <div className="lp-who-emoji" aria-hidden="true">{c.icon}</div>
                 <h3 className="lp-who-title">{c.title}</h3>
                 <p className="lp-who-desc">{c.desc}</p>
-              </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
       {/* ── HOW IT WORKS ────────────── */}
-      <section id="how" className="lp-how reveal-on-scroll">
-        <div className="lp-section-tag">{t.howTag}</div>
+      <section id="how" className="lp-how reveal-on-scroll" aria-label="How to book a driver with CircleInd">
+        <p className="lp-section-tag">{t.howTag}</p>
         <h2 className="lp-section-title">{t.howTitle}</h2>
 
-        <div className="lp-steps lp-steps-3">
+        <ol className="lp-steps lp-steps-3" aria-label="Booking steps">
           {t.steps.map((s, i) => (
-            <div
+            <li
               key={i}
               className={`lp-step ${activeStep === i ? 'lp-step-active' : ''}`}
               onMouseEnter={() => setActiveStep(i)}
             >
-              <div className="lp-step-num">0{i + 1}</div>
-              <div className="lp-step-icon">{s.icon}</div>
+              <div className="lp-step-num" aria-hidden="true">0{i + 1}</div>
+              <div className="lp-step-icon" aria-hidden="true">{s.icon}</div>
               <h3 className="lp-step-title">{s.title}</h3>
               <p className="lp-step-desc">{s.desc}</p>
-            </div>
+            </li>
           ))}
-        </div>
+        </ol>
       </section>
 
       {/* ── CAR WASH SECTION ─────────── */}
-      <section id="carwash" className="lp-carwash reveal-on-scroll">
+      <section id="carwash" className="lp-carwash reveal-on-scroll" aria-label="Premium vehicle washing services">
         <div className="lp-carwash-inner">
 
           {/* Heading */}
           <div className="lp-carwash-header">
-            <div className="lp-section-tag" style={{color:'#3b82f6'}}>
-              <Droplets size={14} style={{verticalAlign:'middle', marginRight:6}}/>{t.washTag}
-            </div>
+            <p className="lp-section-tag" style={{color:'#3b82f6'}}>
+              <Droplets size={14} style={{verticalAlign:'middle', marginRight:6}} aria-hidden="true" />{t.washTag}
+            </p>
             <h2 className="lp-section-title" style={{color:'#0f172a'}}>{t.washTitle}</h2>
             <p className="lp-carwash-sub">{t.washSub}</p>
 
@@ -537,38 +544,46 @@ const Landing = () => {
           </div>
 
           {/* CTA */}
-          <a href={WA_WASH_LINK} target="_blank" rel="noopener noreferrer" className="lp-btn-primary" style={{marginTop:'40px', alignSelf:'center'}}>
-            {t.washCta} <ArrowRight size={18} />
+          <a
+            href={WA_WASH_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="lp-btn-primary"
+            style={{marginTop:'40px', alignSelf:'center'}}
+            title="Book a vehicle wash via WhatsApp — CircleInd Gobichettipalayam"
+            aria-label="Book All Vehicle Washing via WhatsApp"
+          >
+            {t.washCta} <ArrowRight size={18} aria-hidden="true" />
           </a>
 
         </div>
       </section>
 
       {/* ── CUSTOMER & DRIVER BENEFITS ── */}
-      <section id="benefits" className="lp-benefits">
+      <section id="benefits" className="lp-benefits" aria-label="Why choose CircleInd">
         
         {/* Customer Benefits - White Background */}
         <div className="lp-benefits-customer reveal-on-scroll">
           <div className="lp-benefits-inner">
             <h2 className="lp-section-title">{t.customerBenefitsTitle}</h2>
-            <div className="lp-benefits-grid">
+            <ul className="lp-benefits-grid" role="list" aria-label="Customer benefits list">
               {t.customerBenefitsCards.map((c, i) => (
-                <div key={i} className="lp-benefits-card customer-card">
-                  <div className="lp-benefits-icon">{c.icon}</div>
-                  <h4 className="lp-benefits-title">{c.title}</h4>
-                </div>
+                <li key={i} className="lp-benefits-card customer-card" role="listitem">
+                  <div className="lp-benefits-icon" aria-hidden="true">{c.icon}</div>
+                  <h3 className="lp-benefits-title">{c.title}</h3>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </div>
 
         {/* Trust Badges Strip */}
-        <div className="lp-trust-strip reveal-on-scroll">
+        <div className="lp-trust-strip reveal-on-scroll" role="list" aria-label="Trust signals">
           <div className="lp-trust-strip-inner">
             {t.trustBadges.map((badge, i) => (
               <React.Fragment key={i}>
-                <span className="lp-trust-badge">{badge}</span>
-                {i < t.trustBadges.length - 1 && <span className="lp-trust-dot">•</span>}
+                <span className="lp-trust-badge" role="listitem">{badge}</span>
+                {i < t.trustBadges.length - 1 && <span className="lp-trust-dot" aria-hidden="true">•</span>}
               </React.Fragment>
             ))}
           </div>
@@ -578,67 +593,89 @@ const Landing = () => {
         <div className="lp-benefits-driver reveal-on-scroll">
           <div className="lp-benefits-inner">
             <h2 className="lp-section-title" style={{color: '#fff'}}>{t.driverBenefitsTitle}</h2>
-            <div className="lp-benefits-grid">
+            <ul className="lp-benefits-grid" role="list" aria-label="Driver benefits list">
               {t.driverBenefitsCards.map((c, i) => (
-                <div key={i} className="lp-benefits-card driver-card">
-                  <div className="lp-benefits-icon">{c.icon}</div>
-                  <h4 className="lp-benefits-title">{c.title}</h4>
-                </div>
+                <li key={i} className="lp-benefits-card driver-card" role="listitem">
+                  <div className="lp-benefits-icon" aria-hidden="true">{c.icon}</div>
+                  <h3 className="lp-benefits-title">{c.title}</h3>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </div>
         
       </section>
 
       {/* ── WHY CUSTOMERS LOVE IT ───── */}
-      <section id="why" className="lp-why reveal-on-scroll">
+      <section id="why" className="lp-why reveal-on-scroll" aria-label="Why customers love CircleInd">
         <div className="lp-why-inner">
-          <div className="lp-section-tag light" style={{textAlign:'center', display:'block'}}>{t.whyTitle}</div>
-          <div className="lp-why-grid">
+          <h2 className="lp-section-tag light" style={{textAlign:'center', display:'block'}}>{t.whyTitle}</h2>
+          <div className="lp-why-grid" role="list">
             {t.whyCards.map((c, i) => (
-              <div key={i} className="lp-why-card">
-                <div className="lp-why-icon">{c.icon}</div>
-                <h4 className="lp-why-title">{c.title}</h4>
+              <article key={i} className="lp-why-card" role="listitem">
+                <div className="lp-why-icon" aria-hidden="true">{c.icon}</div>
+                <h3 className="lp-why-title">{c.title}</h3>
                 <p className="lp-why-desc">{c.desc}</p>
-              </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
       {/* ── TEAM ──────────────────────── */}
-      <section id="team" className="lp-team reveal-on-scroll">
+      <section id="team" className="lp-team reveal-on-scroll" aria-label="Meet the CircleInd founders">
         <div className="lp-team-inner">
-          <div className="lp-section-tag light" style={{textAlign:'center', display:'inline-block', margin:'0 auto 12px'}}>{t.teamTag}</div>
+          <p className="lp-section-tag light" style={{textAlign:'center', display:'inline-block', margin:'0 auto 12px'}}>{t.teamTag}</p>
           <h2 className="lp-section-title" style={{color: '#fff'}}>{t.teamTitle}</h2>
-          <div className="lp-team-grid">
+          <div className="lp-team-grid" role="list">
             {t.teamMembers.map((member, i) => (
-              <div key={i} className="lp-team-card">
-                <div className="lp-team-avatar">
+              <article key={i} className="lp-team-card" role="listitem" itemScope itemType="https://schema.org/Person">
+                <div className="lp-team-avatar" aria-hidden="true">
                   <User size={40} color="#6366f1" />
                 </div>
-                <h4 className="lp-team-name">{member.name}</h4>
-                <p className="lp-team-role">{member.role}</p>
-              </div>
+                <h3 className="lp-team-name" itemProp="name">{member.name}</h3>
+                <p className="lp-team-role" itemProp="jobTitle">{member.role}</p>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
       {/* ── FAQ ──────────────────────── */}
-      <section id="faq" className="lp-faq reveal-on-scroll">
+      <section id="faq" className="lp-faq reveal-on-scroll" aria-label="Frequently Asked Questions about CircleInd" itemScope itemType="https://schema.org/FAQPage">
         <div className="lp-faq-inner">
           <h2 className="lp-section-title">{t.faqTitle}</h2>
-          <div className="lp-faq-list">
+          <div className="lp-faq-list" role="list">
             {t.faqs.map((faq, i) => (
-              <div key={i} className={`lp-faq-item ${openFaq === i ? 'open' : ''}`} onClick={() => toggleFaq(i)}>
-                <div className="lp-faq-q">
+              <div
+                key={i}
+                className={`lp-faq-item ${openFaq === i ? 'open' : ''}`}
+                onClick={() => toggleFaq(i)}
+                role="listitem"
+                itemScope
+                itemType="https://schema.org/Question"
+              >
+                <div
+                  className="lp-faq-q"
+                  role="button"
+                  tabIndex={0}
+                  aria-expanded={openFaq === i}
+                  aria-controls={`faq-answer-${i}`}
+                  onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && toggleFaq(i)}
+                  itemProp="name"
+                >
                   {faq.q}
-                  <ChevronDown size={20} className="lp-faq-icon" />
+                  <ChevronDown size={20} className="lp-faq-icon" aria-hidden="true" />
                 </div>
-                <div className="lp-faq-a">
-                  <div className="lp-faq-a-inner">{faq.a}</div>
+                <div
+                  className="lp-faq-a"
+                  id={`faq-answer-${i}`}
+                  role="region"
+                  aria-labelledby={`faq-q-${i}`}
+                  itemScope
+                  itemType="https://schema.org/Answer"
+                >
+                  <div className="lp-faq-a-inner" itemProp="text">{faq.a}</div>
                 </div>
               </div>
             ))}
@@ -647,31 +684,55 @@ const Landing = () => {
       </section>
 
       {/* ── CTA ─────────────────────── */}
-      <section id="contact" className="lp-cta">
-        <div className="lp-cta-glow" />
-        <div className="lp-cta-check-row">
+      <section id="contact" className="lp-cta" aria-label="Get started with CircleInd">
+        <div className="lp-cta-glow" aria-hidden="true" />
+        <div className="lp-cta-check-row" role="list" aria-label="Service guarantees">
           {['No subscription needed', 'Book in under 1 minute', 'Cancel anytime'].map((t2, i) => (
-            <span key={i} className="lp-cta-check"><CheckCircle size={16}/> {t2}</span>
+            <span key={i} className="lp-cta-check" role="listitem"><CheckCircle size={16} aria-hidden="true" /> {t2}</span>
           ))}
         </div>
         <h2 className="lp-cta-title">{t.ctaTitle}</h2>
         <p className="lp-cta-sub">{t.ctaSub}</p>
-        <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="lp-btn-primary lp-btn-large">
-          {t.ctaBtn} <ArrowRight size={20} />
+        <a
+          href={WA_LINK}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="lp-btn-primary lp-btn-large"
+          title="Find a driver near you in Gobichettipalayam via WhatsApp"
+          aria-label="Find a Driver Near Me — Chat on WhatsApp"
+        >
+          {t.ctaBtn} <ArrowRight size={20} aria-hidden="true" />
         </a>
       </section>
 
       {/* ── FOOTER ──────────────────────────────── */}
-      <footer className="lp-footer">
+      <footer className="lp-footer" role="contentinfo" itemScope itemType="https://schema.org/LocalBusiness">
+        <meta itemProp="name" content="CircleInd" />
+        <meta itemProp="telephone" content="+918838038494" />
+        <meta itemProp="email" content="circleindrive@gmail.com" />
         {/* ── CLASSY APPLE-STYLE WHATSAPP BLOCK ── */}
         <div className="lp-wa-classy-block reveal-on-scroll">
           <div className="lp-wa-classy-qr-wrap">
-            <img src={WA_QR} alt="WhatsApp QR Code" className="lp-wa-classy-qr" />
+            <img
+              src={WA_QR}
+              alt="Scan this QR code to chat with CircleInd on WhatsApp and book a driver or vehicle wash in Gobichettipalayam"
+              className="lp-wa-classy-qr"
+              loading="lazy"
+              width="180"
+              height="180"
+            />
           </div>
           <div className="lp-wa-classy-content">
             <h3 className="lp-wa-classy-heading">Need a driver instantly?</h3>
             <p className="lp-wa-classy-sub">Scan the code or tap the button to chat with our support team on WhatsApp. Fast, simple, and direct.</p>
-            <a aria-label="Chat with us on WhatsApp" href={WA_LINK} target="_blank" rel="noopener noreferrer" className="lp-wa-classy-btn">
+            <a
+              aria-label="Chat with CircleInd on WhatsApp to book a driver or vehicle wash"
+              title="Chat with CircleInd on WhatsApp"
+              href={WA_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="lp-wa-classy-btn"
+            >
               <svg viewBox="0 0 24 24" fill="#25d366" width="22" height="22">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
               </svg>
@@ -680,19 +741,28 @@ const Landing = () => {
           </div>
         </div>
 
-        <div className="lp-footer-divider" />
+        <div className="lp-footer-divider" role="separator" />
         <div className="lp-footer-brand">
-          <Logo size={22} />
-          <span>{lang === 'en' ? 'CircleInd' : 'CircleInd'}</span>
+          <Logo size={22} aria-hidden="true" />
+          <span itemProp="name">{lang === 'en' ? 'CircleInd' : 'CircleInd'}</span>
         </div>
-        <div className="lp-footer-contact">
-          <a href="mailto:circleindrive@gmail.com">circleindrive@gmail.com</a>
-          <span className="dot-sep">•</span>
-          <a href="tel:+918838038494">+91 88380 38494</a>
-          <span className="dot-sep">•</span>
-          <span>Gobichettipalayam</span>
-        </div>
-        <p className="lp-footer-copy">{t.footer}</p>
+        <address className="lp-footer-contact" itemScope itemType="https://schema.org/PostalAddress">
+          <a
+            href="mailto:circleindrive@gmail.com"
+            aria-label="Email CircleInd at circleindrive@gmail.com"
+            itemProp="email"
+          >circleindrive@gmail.com</a>
+          <span className="dot-sep" aria-hidden="true">•</span>
+          <a
+            href="tel:+918838038494"
+            aria-label="Call CircleInd at +91 88380 38494"
+            itemProp="telephone"
+          >+91 88380 38494</a>
+          <span className="dot-sep" aria-hidden="true">•</span>
+          <span itemProp="addressLocality">Gobichettipalayam</span>,&nbsp;
+          <span itemProp="addressRegion">Tamil Nadu</span>
+        </address>
+        <p className="lp-footer-copy">{t.footer} <time dateTime="2025">2025</time></p>
       </footer>
 
       {/* ── CONCISE WHATSAPP PILL ─── */}

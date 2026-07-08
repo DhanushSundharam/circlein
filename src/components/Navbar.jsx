@@ -68,7 +68,7 @@ const Navbar = ({ user, setUser }) => {
   };
 
   return (
-    <nav className="navbar">
+    <nav className="navbar" role="navigation" aria-label="Main navigation">
       <div className="container flex justify-between items-center h-full">
         {/* Brand */}
         <Link to="/" className="navbar-brand flex items-center gap-sm" style={{textDecoration: 'none'}}>
@@ -78,21 +78,28 @@ const Navbar = ({ user, setUser }) => {
 
         {/* Nav Links — only show on landing */}
         {isLanding && !user && (
-          <nav className="navbar-links">
+          <nav className="navbar-links" aria-label="Site sections">
             {NAV_LINKS.map((link, idx) => {
               if (link.dropdown) {
                 return (
                   <div key={idx} className="nav-dropdown-container">
-                    <div className="nav-dropdown-btn">
+                    <div
+                      className="nav-dropdown-btn"
+                      role="button"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                      tabIndex={0}
+                    >
                       {link.label}
-                      <ChevronDown size={14} style={{marginTop: '2px'}} />
+                      <ChevronDown size={14} style={{marginTop: '2px'}} aria-hidden="true" />
                     </div>
-                    <div className="nav-dropdown-menu">
+                    <div className="nav-dropdown-menu" role="menu">
                       {link.dropdown.map(drop => (
                         <a
                           key={drop.href}
                           href={drop.href}
                           className="nav-dropdown-item"
+                          role="menuitem"
                           onClick={e => handleNavClick(e, drop.href)}
                         >
                           {drop.label}
@@ -107,6 +114,7 @@ const Navbar = ({ user, setUser }) => {
                   key={link.href}
                   href={link.href}
                   className={`nav-link ${active === link.href.slice(1) ? 'nav-link-active' : ''}`}
+                  aria-current={active === link.href.slice(1) ? 'true' : undefined}
                   onClick={e => handleNavClick(e, link.href)}
                 >
                   {link.label}
@@ -136,8 +144,11 @@ const Navbar = ({ user, setUser }) => {
             <button 
               className="mobile-menu-toggle" 
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-menu-overlay"
             >
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {mobileMenuOpen ? <X size={24} aria-hidden="true" /> : <Menu size={24} aria-hidden="true" />}
             </button>
           )}
         </div>
@@ -145,7 +156,7 @@ const Navbar = ({ user, setUser }) => {
 
       {/* Mobile Menu Overlay */}
       {isLanding && mobileMenuOpen && (
-        <div className="mobile-menu-overlay">
+        <div className="mobile-menu-overlay" id="mobile-menu-overlay" role="dialog" aria-label="Mobile navigation menu">
           {NAV_LINKS.map((link, idx) => {
             if (link.dropdown) {
               return (

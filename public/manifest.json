@@ -1,0 +1,58 @@
+{
+  "name": "CircleInd",
+  "short_name": "CircleInd",
+  "description": "Hire verified professional drivers & book premium vehicle washing in Gobichettipalayam, Tamil Nadu. Fixed pricing. No bargaining.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0f172a",
+  "theme_color": "#6d28d9",
+  "lang": "en-IN",
+  "dir": "ltr",
+  "categories": ["travel", "lifestyle", "utilities"],
+  "screenshots": [
+    {
+      "src": "/og-image.png",
+      "sizes": "1200x630",
+      "type": "image/png",
+      "label": "CircleInd Landing Page"
+    }
+  ],
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Book a Driver",
+      "short_name": "Book Driver",
+      "description": "Instantly book a verified driver on WhatsApp",
+      "url": "https://wa.me/918838038494?text=Hi!%20I%20want%20to%20book%20a%20driver%20through%20CircleInd.",
+      "icons": [{ "src": "/favicon.svg", "sizes": "96x96" }]
+    },
+    {
+      "name": "Book Vehicle Wash",
+      "short_name": "Book Wash",
+      "description": "Book a premium vehicle wash through CircleInd",
+      "url": "https://wa.me/918838038494?text=Hi!%20I%20want%20to%20book%20a%20vehicle%20wash%20through%20CircleInd.",
+      "icons": [{ "src": "/favicon.svg", "sizes": "96x96" }]
+    }
+  ]
+}

@@ -1,4 +1,64 @@
+# CircleInd — robots.txt
+# https://circlein.in/robots.txt
+
+# ── Allow all crawlers on public pages ──────────────────────────────────
 User-agent: *
 Allow: /
+Allow: /#home
+Allow: /#about
+Allow: /#how
+Allow: /#carwash
+Allow: /#benefits
+Allow: /#why
+Allow: /#team
+Allow: /#faq
+Allow: /#contact
 
+# ── Block private dashboard & auth routes from indexing ─────────────────
+Disallow: /customer
+Disallow: /customer/
+Disallow: /driver
+Disallow: /driver/
+Disallow: /admin
+Disallow: /admin/
+Disallow: /login
+Disallow: /login/
+
+# ── Block crawl waste ──────────────────────────────────────────────────
+Disallow: /src/
+Disallow: /*.json$
+Disallow: /*.map$
+
+# ── Googlebot specific (prioritise crawl budget) ────────────────────────
+User-agent: Googlebot
+Allow: /
+Disallow: /customer
+Disallow: /driver
+Disallow: /admin
+Disallow: /login
+Crawl-delay: 2
+
+# ── Bingbot ──────────────────────────────────────────────────────────
+User-agent: Bingbot
+Allow: /
+Disallow: /customer
+Disallow: /driver
+Disallow: /admin
+Disallow: /login
+Crawl-delay: 3
+
+# ── Block bad bots ─────────────────────────────────────────────────────
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# ── Sitemap ────────────────────────────────────────────────────────────
 Sitemap: https://circlein.in/sitemap.xml
