@@ -1,0 +1,215 @@
+/* Services Page - OpenAI/Stripe Feature Split Aesthetic */
+.services-page {
+  background-color: #fff;
+  color: #111827;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* Services Hero */
+.services-hero {
+  text-align: center;
+  padding: 160px 20px 100px;
+}
+.services-hero h1 {
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  color: #000;
+  margin-bottom: 24px;
+  line-height: 1.1;
+}
+.services-hero p {
+  font-size: 1.25rem;
+  color: #4b5563;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+/* Feature Split Layout */
+.feature-split-section {
+  max-width: 1200px;
+  margin: 0 auto 160px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+.feature-split-section.reverse {
+  flex-direction: row-reverse;
+}
+
+/* Text Content Side */
+.feature-text-content {
+  flex: 1;
+  max-width: 480px;
+}
+.feature-text-content h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin-bottom: 24px;
+  line-height: 1.2;
+}
+.feature-text-content p {
+  font-size: 1.125rem;
+  color: #4b5563;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+/* Visual Mockup Side */
+.feature-visual {
+  flex: 1.2;
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 500px;
+  padding: 64px;
+}
+
+/* Gradients */
+.bg-gradient-purple {
+  background: radial-gradient(120% 120% at 50% -20%, #c4b5fd 0%, #8b5cf6 50%, #4c1d95 100%);
+}
+.bg-gradient-blue {
+  background: radial-gradient(120% 120% at -20% 50%, #84b6f4 0%, #4a90e2 50%, #1e3a8a 100%);
+}
+.bg-gradient-orange {
+  background: radial-gradient(120% 120% at 50% -20%, #fed7aa 0%, #f97316 50%, #9a3412 100%);
+}
+
+/* Purple Mockup (Driver) */
+.mockup-container.purple-mockup {
+  background: #f8f9fc;
+  border-radius: 24px;
+  padding: 48px;
+  width: 85%;
+  max-width: 440px;
+  box-shadow: 0 32px 64px rgba(76, 29, 149, 0.2);
+}
+.mockup-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 36px;
+}
+.mockup-step:last-child {
+  margin-bottom: 0;
+}
+.mockup-icon {
+  background: #fff;
+  border-radius: 14px;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+}
+.mockup-step h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #111827;
+}
+.mockup-step p {
+  font-size: 0.95rem;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+/* Blue Mockup (Car Wash) */
+.mockup-container.blue-mockup {
+  background: #f1f5f9;
+  border-radius: 24px;
+  padding: 48px;
+  width: 85%;
+  max-width: 440px;
+  box-shadow: 0 32px 64px rgba(30, 58, 138, 0.15);
+}
+.mockup-wash-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.mockup-wash-card {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 24px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+}
+.mockup-wash-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.mockup-wash-card h4 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 4px;
+}
+.mockup-wash-card p {
+  font-size: 0.9rem;
+  color: #6b7280;
+  line-height: 1.4;
+}
+
+/* CTA */
+.services-cta-wrap {
+  text-align: center;
+  margin-top: 40px;
+}
+.services-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: #000;
+  color: #fff;
+  padding: 16px 32px;
+  border-radius: 100px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.services-cta-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .feature-split-section {
+    flex-direction: column;
+    gap: 48px;
+    text-align: center;
+  }
+  .feature-split-section.reverse {
+    flex-direction: column;
+  }
+  .feature-text-content {
+    max-width: 600px;
+  }
+  .feature-visual {
+    width: 100%;
+    min-height: 400px;
+  }
+}
+@media (max-width: 768px) {
+  .services-hero h1 { font-size: 2.5rem; }
+  .feature-split-section { margin-bottom: 80px; }
+  .mockup-container { width: 95%; padding: 24px; }
+  .feature-visual { padding: 32px 16px; }
+}

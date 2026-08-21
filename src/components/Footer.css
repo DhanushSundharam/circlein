@@ -1,0 +1,88 @@
+.circle-footer {
+  background-color: var(--accent-color);
+  color: #fff;
+  padding: 48px 40px 120px 40px; /* 120px bottom padding to clear floating WhatsApp button */
+  display: flex;
+  flex-direction: column;
+  gap: 80px; /* space between top and bottom row */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+.circle-footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.circle-footer-copy {
+  font-size: 1.25rem;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+.circle-footer-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.circle-footer-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+.circle-footer-links a:hover {
+  opacity: 0.8;
+}
+.circle-footer-lang-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  transition: background 0.2s;
+}
+.circle-footer-lang-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+.circle-footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+@media (max-width: 768px) {
+  .circle-footer {
+    padding: 32px 16px;
+    gap: 40px;
+  }
+  .circle-footer-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .circle-footer-links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .circle-footer-links span {
+    display: none;
+  }
+  .circle-footer-contact {
+    text-align: left !important;
+  }
+  .circle-footer-copy {
+    font-size: 1rem;
+    margin-bottom: 24px;
+  }
+}

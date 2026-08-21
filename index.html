@@ -510,6 +510,34 @@
     }
     </script>
 
+    <!-- ══ STRUCTURED DATA: SiteNavigationElement (Sitelinks) ═════ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SiteNavigationElement",
+          "name": "Blog",
+          "url": "https://circlein.in/blog"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "name": "About",
+          "url": "https://circlein.in/team"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "name": "Services",
+          "url": "https://circlein.in/services"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "name": "Why Us",
+          "url": "https://circlein.in/whyus"
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>

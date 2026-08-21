@@ -1,72 +1,135 @@
+/* ── Authentication — Premium Glassmorphic UI ── */
+
 .login-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - 70px);
-  padding: 20px;
-  background: radial-gradient(circle at center, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+  min-height: 100vh;
+  padding: 24px;
+  background: var(--bg-main);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Abstract Ambient Background */
+.login-container::before,
+.login-container::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.2;
+  pointer-events: none;
+  animation: loginBlob 15s ease-in-out infinite alternate;
+}
+.login-container::before {
+  width: 600px; height: 600px;
+  background: hsl(230, 80%, 60%);
+  top: -200px; left: -200px;
+}
+.login-container::after {
+  width: 500px; height: 500px;
+  background: hsl(280, 80%, 65%);
+  bottom: -150px; right: -150px;
+  animation-delay: -5s;
+}
+
+@keyframes loginBlob {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(40px, -40px) scale(1.1); }
 }
 
 .login-card {
   width: 100%;
-  max-width: 400px;
+  max-width: 420px;
   text-align: center;
+  padding: 48px 40px;
+  background: hsla(0, 0%, 100%, 0.85);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid hsla(0, 0%, 100%, 0.8);
+  box-shadow: 0 24px 48px -12px hsla(230, 80%, 0%, 0.1), inset 0 1px 0 hsla(0,0%,100%,1);
+  position: relative;
+  z-index: 10;
+  animation: slideUp 0.6s var(--ease-out-quint) forwards;
 }
 
 .login-card h2 {
-  font-size: 1.8rem;
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
   margin-bottom: 8px;
+  color: var(--text-primary);
 }
 
 .subtitle {
   color: var(--text-secondary);
-  margin-bottom: 24px;
+  font-size: 0.95rem;
+  margin-bottom: 32px;
 }
 
+/* Role Selector Pill */
 .role-selector {
   display: flex;
-  background-color: var(--bg-tertiary);
-  border-radius: var(--radius-md);
+  background-color: var(--bg-hover);
+  border-radius: var(--radius-full);
   padding: 4px;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
+  border: 1px solid var(--border-subtle);
+  position: relative;
 }
 
 .role-btn {
   flex: 1;
   background: transparent;
   color: var(--text-secondary);
-  padding: 8px 0;
-  border-radius: var(--radius-sm);
-  font-size: 0.9rem;
-  font-weight: 500;
+  padding: 10px 0;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 600;
   transition: all var(--transition-fast);
+  position: relative;
+  z-index: 2;
 }
+.role-btn:hover { color: var(--text-primary); }
 
 .role-btn.active {
-  background-color: var(--bg-secondary);
+  background-color: var(--bg-card);
   color: var(--text-primary);
   box-shadow: var(--shadow-sm);
 }
 
+/* Form Styles */
 .login-form {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
   text-align: left;
 }
 
 .input-group label {
   display: block;
   font-size: 0.85rem;
-  color: var(--text-secondary);
-  margin-bottom: 6px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
 }
 
-.w-full {
-  width: 100%;
+.login-form .input-field {
+  padding: 14px 16px;
+  background: hsla(0, 0%, 100%, 0.5);
+}
+.login-form .input-field:focus {
+  background: var(--bg-card);
 }
 
-.mt-md {
-  margin-top: 16px;
-}
+.w-full { width: 100%; }
+.mt-md { margin-top: 16px; }
 
+/* Overriding global button for login context */
+.login-form .btn-primary {
+  padding: 14px;
+  font-size: 1rem;
+  margin-top: 8px;
+  letter-spacing: 0;
+}

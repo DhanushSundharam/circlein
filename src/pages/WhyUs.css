@@ -1,0 +1,250 @@
+/* Why Us Page - Minimalist Editorial Aesthetic */
+.why-us-page {
+  background-color: #fcfcfc;
+  color: #111;
+  font-family: system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Typography and Highlighting */
+.highlight-pill {
+  display: inline-block;
+  background-color: #e6f4ea; /* soft pastel green */
+  color: #111;
+  padding: 4px 16px;
+  border-radius: 40px;
+  font-weight: 500;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+.highlight-pill.yellow {
+  background-color: #fef0c7; /* soft pastel yellow */
+}
+
+/* ── Hero Section ── */
+.wu-hero {
+  padding: 180px 24px 100px;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+/* Subtle top gradient glow */
+.wu-hero::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(254,240,199,0.3) 0%, rgba(230,244,234,0.3) 50%, rgba(252,252,252,0) 80%);
+  z-index: 0;
+  pointer-events: none;
+}
+.wu-hero-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.wu-hero h1 {
+  font-size: 5rem;
+  line-height: 1.1;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  max-width: 800px;
+  margin: 0;
+  color: #111;
+}
+.wu-hero h1 strong {
+  font-weight: 600;
+}
+.wu-scroll-indicator {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #888;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+.wu-scroll-indicator::after {
+  content: '↓';
+  font-size: 1.2rem;
+}
+.wu-hero-desc {
+  margin-top: 64px;
+  max-width: 400px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #444;
+  margin-left: auto;
+  margin-right: 100px;
+}
+
+/* ── Feature Splits ── */
+.wu-feature {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto 160px;
+  padding: 0 24px;
+  gap: 80px;
+}
+.wu-feature.reverse {
+  flex-direction: row-reverse;
+}
+.wu-feature-text {
+  flex: 1;
+  max-width: 500px;
+}
+.wu-feature-text h2 {
+  font-size: 3.5rem;
+  line-height: 1.15;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+}
+.wu-feature-text p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 32px;
+}
+.wu-link {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #111;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid #111;
+  padding-bottom: 2px;
+  transition: opacity 0.2s ease;
+}
+.wu-link:hover {
+  opacity: 0.7;
+}
+
+.wu-feature-img {
+  flex: 1.2;
+  position: relative;
+}
+.wu-feature-img img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 24px 48px rgba(0,0,0,0.06);
+  display: block;
+  object-fit: cover;
+  max-height: 500px;
+}
+
+/* ── Benefits List Section ── */
+.wu-list-section {
+  max-width: 1000px;
+  margin: 0 auto 160px;
+  padding: 0 24px;
+}
+.wu-list-section h2 {
+  font-size: 3rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin-bottom: 64px;
+  text-align: left;
+}
+.wu-list {
+  display: flex;
+  flex-direction: column;
+}
+.wu-list-item {
+  display: flex;
+  align-items: center;
+  padding: 32px 0;
+  border-bottom: 1px solid #eaeaea;
+}
+.wu-list-item:first-child {
+  border-top: 1px solid #eaeaea;
+}
+.wu-list-icon {
+  flex: 0 0 60px;
+  color: #666;
+}
+.wu-list-content {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 24px;
+}
+.wu-list-title {
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: #111;
+}
+.wu-list-desc {
+  font-size: 0.95rem;
+  color: #666;
+  max-width: 400px;
+  text-align: right;
+}
+.wu-list-arrow {
+  flex: 0 0 24px;
+  color: #111;
+  opacity: 0.5;
+  transition: opacity 0.2s ease;
+}
+.wu-list-item:hover .wu-list-arrow {
+  opacity: 1;
+}
+
+/* Scroll Animations */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-up.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .wu-hero h1 { font-size: 4rem; }
+  .wu-feature { flex-direction: column; gap: 48px; text-align: center; }
+  .wu-feature.reverse { flex-direction: column; }
+  .wu-feature-text { max-width: 600px; }
+  .wu-hero-desc { margin: 48px auto 0; text-align: center; }
+  .wu-list-content { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .wu-list-desc { text-align: left; }
+}
+@media (max-width: 768px) {
+  .wu-hero { padding: 120px 16px 60px; }
+  .wu-hero h1 { font-size: clamp(2rem, 8vw, 3rem); }
+  .wu-hero-inner { flex-direction: column; }
+  .wu-scroll-indicator { display: none; }
+  .wu-hero-desc { font-size: 1.125rem; }
+  
+  .wu-feature { padding: 40px 16px; gap: 32px; }
+  .wu-feature-text h2 { font-size: 2rem; }
+  .wu-feature-text p { font-size: 1rem; }
+  .wu-feature-img { border-radius: 16px; }
+  
+  .wu-list-section { padding: 60px 16px; }
+  .wu-list-section h2 { font-size: 2rem; }
+  
+  .wu-list-item { padding: 24px; flex-direction: column; text-align: center; }
+  .wu-list-icon { margin: 0 auto 16px; }
+  .wu-list-content { align-items: center; text-align: center; }
+  .wu-list-desc { text-align: center; }
+  .wu-list-arrow { display: none; }
+}

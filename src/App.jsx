@@ -6,6 +6,12 @@ import DriverDashboard from './pages/DriverDashboard';
 import AdminDashboard from './pages/AdminDashboard';
 import Login from './pages/Login';
 import Landing from './pages/Landing';
+import Services from './pages/Services';
+import Team from './pages/Team';
+import WhyUs from './pages/WhyUs';
+import Faq from './pages/Faq';
+import BlogList from './pages/BlogList';
+import BlogPost from './pages/BlogPost';
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -31,8 +37,8 @@ class ErrorBoundary extends React.Component {
 
 function AppContent({ user, setUser }) {
   const location = useLocation();
-  // Show navbar ONLY on the landing page
-  const showNavbar = location.pathname === '/';
+  // Show navbar ONLY on the marketing pages
+  const showNavbar = ['/', '/services', '/team', '/whyus', '/faq', '/blog'].includes(location.pathname) || location.pathname.startsWith('/blog/');
 
   return (
     <div className="app-container">
@@ -41,6 +47,12 @@ function AppContent({ user, setUser }) {
         <ErrorBoundary>
           <Routes>
             <Route path="/" element={user ? <Navigate to={`/${user.role}`} /> : <Landing />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/team" element={<Team />} />
+            <Route path="/whyus" element={<WhyUs />} />
+            <Route path="/faq" element={<Faq />} />
+            <Route path="/blog" element={<BlogList />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/login" element={user ? <Navigate to={`/${user.role}`} /> : <Login setUser={setUser} />} />
             
             {/* Role-based Routes */}
