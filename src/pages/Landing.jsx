@@ -94,8 +94,15 @@ const Landing = () => {
     return () => observer.disconnect();
   }, []);
 
+  const handleMouseMove = (e) => {
+    const { currentTarget, clientX, clientY } = e;
+    currentTarget.style.setProperty('--mouse-x', `${clientX}px`);
+    currentTarget.style.setProperty('--mouse-y', `${clientY}px`);
+  };
+
   return (
-    <div className="landing-page">
+    <div className="landing-page" onMouseMove={handleMouseMove}>
+      <div className="landing-glow"></div>
       <div className="lp-ambient-background">
         <div className="lp-blob lp-blob-1" style={{ transform: `translate3d(0, ${scrollY * 0.4}px, 0) rotate(${scrollY * 0.05}deg)` }}></div>
         <div className="lp-blob lp-blob-2" style={{ transform: `translate3d(0, ${scrollY * -0.25}px, 0) scale(${1 + scrollY * 0.001})` }}></div>
