@@ -34,6 +34,7 @@
 }
 .circle-footer-links a:hover {
   opacity: 0.8;
+  color: #fff;
 }
 .circle-footer-lang-btn {
   background: transparent;
