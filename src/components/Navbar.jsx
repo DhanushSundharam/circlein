@@ -73,7 +73,8 @@ const Navbar = ({ user, setUser }) => {
         {/* Left: Brand */}
         <div className="navbar-left">
           <Link to="/" className="navbar-brand flex items-center gap-sm" style={{textDecoration: 'none'}}>
-            <h2 style={{ fontSize: '1.5rem', letterSpacing: '-0.02em', fontWeight: '700' }}>
+            <Logo size={30} />
+            <h2 style={{ fontSize: '1.5rem', letterSpacing: '-0.02em', fontWeight: '700', margin: 0 }}>
               <span style={{color: '#8b5cf6'}}>Circle</span>
               <span style={{color: '#111827'}}>Ind.</span>
             </h2>
