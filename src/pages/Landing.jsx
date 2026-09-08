@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { MapContainer, TileLayer, Polyline, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -55,6 +55,31 @@ const Landing = () => {
   const [wordIndex, setWordIndex] = useState(0);
   const [carPath, setCarPath] = useState('');
   const [scrollY, setScrollY] = useState(0);
+
+  const whoScrollRef = useRef(null);
+  const whyScrollRef = useRef(null);
+
+  useEffect(() => {
+    const handleAutoScroll = (ref) => {
+      if (ref.current && window.innerWidth <= 768) {
+        const { scrollLeft, scrollWidth, clientWidth } = ref.current;
+        const scrollAmount = clientWidth * 0.85 + 16;
+        
+        if (scrollLeft + clientWidth >= scrollWidth - 10) {
+          ref.current.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          ref.current.scrollTo({ left: scrollLeft + scrollAmount, behavior: 'smooth' });
+        }
+      }
+    };
+
+    const interval = setInterval(() => {
+      handleAutoScroll(whoScrollRef);
+      handleAutoScroll(whyScrollRef);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -262,13 +287,15 @@ const Landing = () => {
         <div className="lp-who-inner">
           <p className="lp-section-tag" style={{textAlign:'center', display:'block'}}>{t.whoTitle}</p>
           <h2 className="lp-section-title">{t.whoSub}</h2>
-          <div className="lp-who-grid" role="list">
+          <div className="lp-who-grid bento-horizontal-list" role="list" ref={whoScrollRef}>
             {t.whoCards.map((c, i) => (
-              <article key={i} className="lp-who-card" role="listitem">
-                <div className="lp-who-emoji" aria-hidden="true">{c.icon}</div>
-                <h3 className="lp-who-title">{c.title}</h3>
-                <p className="lp-who-desc">{c.desc}</p>
-              </article>
+              <article key={i} className={`lp-why-card bento-h-${i}`} role="listitem">
+                  <div className="bento-content">
+                    <h3 className="lp-why-title">{c.title}</h3>
+                    <p className="lp-why-desc">{c.desc}</p>
+                  </div>
+                  <div className="lp-why-icon bento-icon" aria-hidden="true">{c.icon}</div>
+                </article>
             ))}
           </div>
         </div>
@@ -283,12 +310,14 @@ const Landing = () => {
       <section id="why" className="lp-why reveal-on-scroll" aria-label="Why customers love CircleInd">
         <div className="lp-why-inner">
           <h2 className="lp-section-title" style={{textAlign:'center', display:'block', marginBottom: '40px'}}>{t.whyTitle}</h2>
-          <div className="lp-why-grid" role="list">
+          <div className="lp-why-grid bento-grid" role="list" ref={whyScrollRef}>
             {t.whyCards.map((c, i) => (
-              <article key={i} className="lp-why-card" role="listitem">
-                <div className="lp-why-icon" aria-hidden="true">{c.icon}</div>
-                <h3 className="lp-why-title">{c.title}</h3>
-                <p className="lp-why-desc">{c.desc}</p>
+              <article key={i} className={`lp-why-card bento-${i}`} role="listitem">
+                <div className="bento-content">
+                  <h3 className="lp-why-title">{c.title}</h3>
+                  <p className="lp-why-desc">{c.desc}</p>
+                </div>
+                <div className="lp-why-icon bento-icon" aria-hidden="true">{c.icon}</div>
               </article>
             ))}
           </div>
@@ -298,25 +327,47 @@ const Landing = () => {
       
 
       {/* ── CTA ─────────────────────── */}
-      <section id="contact" className="lp-cta" aria-label="Get started with CircleInd">
-        <div className="lp-cta-glow" aria-hidden="true" />
-        <div className="lp-cta-check-row" role="list" aria-label="Service guarantees">
-          {['No subscription needed', 'Book in under 1 minute', 'Cancel anytime'].map((t2, i) => (
-            <span key={i} className="lp-cta-check" role="listitem"><CheckCircle size={16} aria-hidden="true" /> {t2}</span>
-          ))}
+      <section id="contact" className="lp-poster-cta" aria-label="Get started with CircleInd">
+        <div className="lp-poster-grid">
+          
+          {/* Top Left: Blue */}
+          <div className="lp-poster-cell bg-blue text-white">
+            <span className="lp-poster-pill">QUICK START</span>
+            <h2 className="lp-poster-title">{t.ctaTitle}</h2>
+          </div>
+
+          {/* Top Right: White */}
+          <div className="lp-poster-cell bg-white text-dark">
+            <span className="lp-poster-pill pill-blue">GUARANTEES</span>
+            <ul className="lp-poster-list">
+              {['No subscription needed', 'Book in under 1 minute', 'Cancel anytime'].map((t2, i) => (
+                <li key={i}><CheckCircle size={24} className="lp-poster-check" aria-hidden="true" /> {t2}</li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Bottom Left: White */}
+          <div className="lp-poster-cell bg-white text-dark">
+            <span className="lp-poster-pill pill-blue">THE PROMISE</span>
+            <p className="lp-poster-desc">{t.ctaSub}</p>
+          </div>
+
+          {/* Bottom Right: Blue */}
+          <div className="lp-poster-cell bg-blue text-white action-cell">
+            <h2 className="lp-poster-action-text">{t.ctaBtn}</h2>
+            <a
+              href={WA_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="lp-poster-btn"
+              title="Find a driver near you via WhatsApp"
+              aria-label="Find a Driver Near Me — Chat on WhatsApp"
+            >
+              <ArrowRight size={48} aria-hidden="true" />
+            </a>
+          </div>
+
         </div>
-        <h2 className="lp-cta-title">{t.ctaTitle}</h2>
-        <p className="lp-cta-sub">{t.ctaSub}</p>
-        <a
-          href={WA_LINK}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="lp-btn-primary lp-btn-large"
-          title="Find a driver near you in Gobichettipalayam via WhatsApp"
-          aria-label="Find a Driver Near Me — Chat on WhatsApp"
-        >
-          {t.ctaBtn} <ArrowRight size={20} aria-hidden="true" />
-        </a>
       </section>
 
       {/* ── FOOTER ──────────────────────────────── */}

@@ -94,8 +94,10 @@ const Services = () => {
             <p>Our philosophy is simple: provide safe, stress-free rides in the comfort of your own vehicle.</p>
           </div>
           
-          <div className="feature-visual bg-gradient-purple">
-            <div className="mockup-container purple-mockup">
+          <div className="feature-visual bg-vibrant-blue neo-brutalist">
+            <div className="floating-pill pill-1">24/7</div>
+            <div className="floating-pill pill-2">Verified</div>
+            <div className="mockup-container offset-card-white">
               {t.steps.map((s, i) => (
                 <div key={i} className="mockup-step">
                   <div className="mockup-icon">
@@ -116,7 +118,7 @@ const Services = () => {
           <div className="feature-text-content">
             <h2>{t.washTitle}</h2>
             <p>{t.washSub}</p>
-            <div className="services-cta-wrap" style={{ textAlign: 'left', marginTop: '32px' }}>
+            <div className="services-cta-wrap feature-cta-wrap">
               <a
                 href={WA_WASH_LINK}
                 target="_blank"
@@ -130,8 +132,10 @@ const Services = () => {
             </div>
           </div>
 
-          <div className="feature-visual bg-gradient-blue">
-             <div className="mockup-container blue-mockup">
+          <div className="feature-visual bg-vibrant-orange neo-brutalist">
+             <div className="floating-pill pill-3">Deep Clean</div>
+             <div className="floating-pill pill-4">Fast</div>
+             <div className="mockup-container offset-card-white">
                <div className="mockup-wash-list">
                  {t.washCards.map((card, idx) => (
                    <div key={idx} className="mockup-wash-card">
@@ -154,7 +158,7 @@ const Services = () => {
           <div className="feature-text-content">
             <h2>{t.mechanicTitle}</h2>
             <p>{t.mechanicSub}</p>
-            <div className="services-cta-wrap" style={{ textAlign: 'left', marginTop: '32px' }}>
+            <div className="services-cta-wrap feature-cta-wrap">
               <a
                 href={WA_MECHANIC_LINK}
                 target="_blank"
@@ -168,8 +172,10 @@ const Services = () => {
             </div>
           </div>
           
-          <div className="feature-visual bg-gradient-orange">
-            <div className="mockup-container purple-mockup">
+          <div className="feature-visual bg-vibrant-dark neo-brutalist">
+            <div className="floating-pill pill-5">Expert</div>
+            <div className="floating-pill pill-6">On-Site</div>
+            <div className="mockup-container offset-card-white">
               {t.mechanicCards.map((card, i) => (
                 <div key={i} className="mockup-step">
                   <div className="mockup-icon" style={{ color: card.color }}>
