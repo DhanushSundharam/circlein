@@ -7,7 +7,8 @@ import {
   Shield, Star, Phone, CheckCircle, Smile, Navigation, MessageCircle,
   PartyPopper, Briefcase, Users, HeartPulse,
   Droplets, Wrench, Sparkles, Truck, User, Zap, Wind, Brush, Globe, Bike, Van, Bus,
-  ShieldCheck, BadgeCheck, IndianRupee, Gift
+  ShieldCheck, BadgeCheck, IndianRupee, Gift,
+  MoreHorizontal, Heart, Send, Bookmark
 } from 'lucide-react';
 import Logo from '../components/Logo';
 import Footer from '../components/Footer';
@@ -88,17 +89,49 @@ const Team = () => {
 
         {/* ── TEAM CARDS ────────────── */}
         <section className="team-grid-container reveal-on-scroll">
-          <div className="untitled-team-grid">
+          <div className="insta-team-grid">
             {t.teamMembers.map((member, i) => (
-              <article key={i} className="untitled-team-card">
-                <div className="untitled-team-photo">
-                  {/* <img src={member.image} alt={member.name} /> */}
-                  {/* Placeholder for the image */}
-                  <div style={{ width: '100%', height: '100%', background: '#e5e7eb' }}></div>
+              <article key={i} className={`insta-team-card ${i % 2 === 0 ? 'bg-blue' : 'bg-black'}`}>
+                
+                <div className="insta-header">
+                  <div className="insta-user">
+                    <div className="insta-avatar">
+                      <User size={14} color="#fff" />
+                    </div>
+                    <span className="insta-username">circleind</span>
+                  </div>
+                  <MoreHorizontal size={20} color="#111" />
                 </div>
-                <div className="untitled-team-nameplate">
-                  <h3>{member.name}</h3>
-                  <p>{member.role}</p>
+                
+                <div className="insta-body">
+                  <h3 className="insta-name">{member.name}</h3>
+                  <p className="insta-role">{member.role}</p>
+                  
+                  {i % 2 === 0 ? (
+                    <div className="insta-graphic-blue">
+                      <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" r="45" stroke="#111" strokeWidth="4" />
+                        <path d="M 20 50 Q 50 10 80 50 T 20 50" fill="none" stroke="#111" strokeWidth="4" />
+                      </svg>
+                    </div>
+                  ) : (
+                    <div className="insta-graphic-black">
+                      <div className="blue-blot b1"></div>
+                      <div className="blue-blot b2"></div>
+                      <div className="blue-blot b3"></div>
+                    </div>
+                  )}
+                </div>
+                
+                <div className="insta-footer">
+                  <div className="insta-actions-left">
+                    <Heart size={22} color="#111" />
+                    <MessageCircle size={22} color="#111" />
+                    <Send size={22} color="#111" />
+                  </div>
+                  <div className="insta-actions-right">
+                    <Bookmark size={22} color="#111" />
+                  </div>
                 </div>
               </article>
             ))}

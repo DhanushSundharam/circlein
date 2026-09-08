@@ -69,18 +69,20 @@ const Navbar = ({ user, setUser }) => {
 
   return (
     <nav className="navbar" role="navigation" aria-label="Main navigation">
-      <div className="container flex justify-between items-center h-full">
-        <div className="flex items-center gap-xl">
-          {/* Brand */}
+      <div className="container navbar-container">
+        {/* Left: Brand */}
+        <div className="navbar-left">
           <Link to="/" className="navbar-brand flex items-center gap-sm" style={{textDecoration: 'none'}}>
-            <h2>
+            <h2 style={{ fontSize: '1.5rem', letterSpacing: '-0.02em', fontWeight: '700' }}>
               <span style={{color: '#8b5cf6'}}>Circle</span>
-              <span style={{color: '#111827'}}>Ind</span>
+              <span style={{color: '#111827'}}>Ind.</span>
             </h2>
           </Link>
+        </div>
 
-          {/* Nav Links */}
-          {!user && (
+        {/* Center: Nav Links */}
+        {!user && (
+          <div className="navbar-center">
             <nav className="navbar-links" aria-label="Site sections">
               {NAV_LINKS.map((link) => {
                 const isActive = isLanding 
@@ -98,13 +100,12 @@ const Navbar = ({ user, setUser }) => {
                 );
               })}
             </nav>
-          )}
+          </div>
+        )}
 
-        </div>
-
-        {/* Actions & Mobile Toggle */}
-        <div className="navbar-actions flex items-center gap-md">
-          {user ? (
+        {/* Right: Actions & Mobile Toggle */}
+        <div className="navbar-right flex items-center gap-md">
+          {user && (
             <>
               <div className="user-info flex items-center gap-sm">
                 <User size={20} />
@@ -115,7 +116,7 @@ const Navbar = ({ user, setUser }) => {
                 <LogOut size={20} />
               </button>
             </>
-          ) : null}
+          )}
 
           {/* Mobile Hamburger Toggle */}
           <button 

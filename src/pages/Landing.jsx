@@ -31,7 +31,6 @@ const PILL_COLORS = [
   { bg: '#ffedd5', dot: '#f97316' }, // Orange
   { bg: '#fce7f3', dot: '#ec4899' }, // Pink
 ];
-
 const rawRoute = [[77.437875,11.451016],[77.437894,11.451157],[77.437511,11.45117],[77.437461,11.451174],[77.437142,11.451189],[77.43697,11.451265],[77.436887,11.451302],[77.436854,11.451317],[77.436433,11.451495],[77.43638,11.451506],[77.436336,11.451518],[77.436164,11.451565],[77.436069,11.451591],[77.435252,11.451661],[77.43521,11.451946],[77.435161,11.452475],[77.435128,11.452835],[77.43511,11.453033],[77.435114,11.453285],[77.435267,11.454461],[77.43529,11.454638],[77.435351,11.454907],[77.435362,11.454972],[77.435498,11.454973],[77.435661,11.454977],[77.435872,11.454983],[77.436376,11.454996],[77.436774,11.455006],[77.437024,11.455016],[77.437384,11.45503],[77.437593,11.455038],[77.438103,11.455056],[77.438206,11.455057],[77.438639,11.455056],[77.438834,11.455396],[77.438977,11.455599],[77.439146,11.455767],[77.439707,11.456213],[77.439786,11.456292],[77.439812,11.456319],[77.439889,11.456441],[77.440148,11.45693],[77.440249,11.457092],[77.440329,11.457207],[77.440372,11.457226],[77.440469,11.457327],[77.440611,11.457434],[77.441197,11.457749],[77.441557,11.457928],[77.441666,11.458004],[77.441913,11.458179],[77.442056,11.458284],[77.442256,11.45843],[77.442564,11.458625],[77.442833,11.458778],[77.443185,11.458868],[77.44326,11.458887],[77.443584,11.45897],[77.443644,11.459003],[77.443706,11.457652],[77.443708,11.457614],[77.444167,11.457581],[77.444262,11.457574],[77.444566,11.457544],[77.445562,11.457447],[77.445483,11.457097]];
 const routeCoords = rawRoute.map(c => [c[1], c[0]]);
 
@@ -158,17 +157,12 @@ const Landing = () => {
       </button>
 
       {/* ── HERO ────────────────────── */}
-      <section id="home" className="lp-hero">
-        <div className="hero-map-bg"></div>
-        <div className="lp-hero-inner reveal-on-scroll">
-          <div className="lp-chip" role="note">
-            <span className="lp-chip-dot" aria-hidden="true" />
-            {t.chip}
-          </div>
-
-          <h1 className="lp-hero-title" itemProp="name">
-            {t.heroTitle1} <br />
-            {t.heroTitle2} <br />
+      <section id="home" className="lp-hero-new">
+        <div className="lp-hero-content reveal-on-scroll">
+          <div className="hero-eyebrow">HIRE VERIFIED DRIVERS</div>
+          <h1 className="hero-headline">
+            Your Car <br/>
+            Our Care <br/>
             <span 
               className="notion-pill"
               style={{
@@ -179,123 +173,87 @@ const Landing = () => {
               <span key={wordIndex} className="rotating-text">{t.heroWords[wordIndex]}</span>
             </span>
           </h1>
+          <p className="hero-subheadline" itemProp="description">
+            {t.heroSub}
+          </p>
+        </div>
 
-          <p className="lp-hero-sub" itemProp="description">{t.heroSub}</p>
-
-          <div className="lp-hero-cta">
-            <a
-              href={WA_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="lp-btn-primary"
-              title="Book a professional driver on WhatsApp — CircleInd Gobichettipalayam"
-              aria-label="Book a Driver via WhatsApp"
-            >
-              {t.heroCta1} <ArrowRight size={18} aria-hidden="true" />
-            </a>
-            <a href="#how" className="lp-btn-ghost" aria-label="See how CircleInd works">
-              {t.heroCta2} <ChevronDown size={18} aria-hidden="true" />
+        <div className="hero-arch-container">
+          <div className="hero-arch-bg"></div>
+          
+          <div className="hero-input-wrapper floating-element-1">
+            <div className="hero-input-fake">
+              <MapPin size={20} color="#9ca3af" />
+              <span className="placeholder">Where is your car parked?</span>
+            </div>
+            <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="hero-btn-primary">
+              Book a Driver
             </a>
           </div>
 
-          {/* ── APP MOCKUP (NOTION INSPIRED) ── */}
-          <div className="lp-hero-mockup">
-            <div className="mockup-window">
-              <div className="mockup-header">
-                <div className="mockup-dots">
-                  <span /><span /><span />
+          <div className="hero-mockup-window floating-element-2">
+            <div className="mockup-header">
+              <span className="dot red"></span>
+              <span className="dot yellow"></span>
+              <span className="dot green"></span>
+              <div className="mockup-url">circleind.in</div>
+            </div>
+            <div className="mockup-body-calendar">
+              <div className="calendar-grid-bg"></div>
+              
+              <div className="sticky-notes-board">
+                <div className="hero-sticky-note note-yellow">
+                  <div className="pushpin red-pin"></div>
+                  <div className="note-text">Tomorrow 5AM:<br/>Airport drop ✈️</div>
                 </div>
-                <div className="mockup-url">circleind.com/book</div>
-              </div>
-              <div className="mockup-body">
-                <div className="mockup-main full-map">
-                  <div className="mockup-map-container" style={{ width: '100%', height: '100%', background: '#e5e5ea', position: 'relative', overflow: 'hidden' }}>
-                    
-                    {/* Real Map Background */}
-                    <MapContainer 
-                      center={[11.4540, 77.4415]} 
-                      zoom={15} 
-                      zoomControl={false} 
-                      scrollWheelZoom={false} 
-                      dragging={false}
-                      doubleClickZoom={false}
-                      touchZoom={false}
-                      style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0, zIndex: 0 }}
-                    >
-                      <TileLayer url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png" />
-                      <Polyline positions={routeCoords} color="#3b82f6" weight={6} opacity={0.9} lineCap="round" lineJoin="round" />
-                      <RoutePathGenerator routeCoords={routeCoords} setCarPath={setCarPath} />
-                    </MapContainer>
-
-                    {/* UI Overlays */}
-                    <div style={{ position: 'absolute', inset: 0, zIndex: 10, pointerEvents: 'none' }}>
-                      {/* Tooltips */}
-                      <div style={{ position: 'absolute', top: '15%', left: '25%' }}>
-                        <div className="map-tooltip">
-                          <strong>Gobi Auto Wash</strong>
-                          <span>Open now</span>
-                        </div>
-                        <div className="map-icon-circle">
-                          <Droplets size={14} color="#111827" />
-                        </div>
-                      </div>
-                      
-                      <div style={{ position: 'absolute', top: '45%', left: '20%' }}>
-                        <div className="map-tooltip">
-                          <strong>Sparkle Car Wash</strong>
-                          <span>Available</span>
-                        </div>
-                        <div className="map-icon-circle">
-                          <Droplets size={14} color="#111827" />
-                        </div>
-                      </div>
-
-                      <div style={{ position: 'absolute', top: '75%', left: '70%' }}>
-                        <div className="map-tooltip">
-                          <strong>Expert Mechanic</strong>
-                          <span>2 mins away</span>
-                        </div>
-                        <div className="map-icon-circle">
-                          <Wrench size={14} color="#111827" />
-                        </div>
-                      </div>
-
-                      {/* The Dark Pin */}
-                      <div style={{ position: 'absolute', top: '25%', left: '75%', transform: 'translate(-50%, -50%)' }}>
-                        <div className="map-dark-pin">
-                          <Zap size={16} color="#fff" />
-                        </div>
-                      </div>
-
-                      {/* The Animated Car */}
-                      {carPath && (
-                        <div className="map-animated-car-wrapper" style={{ offsetPath: `path("${carPath}")` }}>
-                          <div className="map-topdown-car" />
-                        </div>
-                      )}
-                    </div>
-                  </div>
+                <div className="hero-sticky-note note-pink">
+                  <div className="pushpin blue-pin"></div>
+                  <div className="note-text">Weekend:<br/>Family trip to Ooty 🌄</div>
+                </div>
+                <div className="hero-sticky-note note-blue">
+                  <div className="pushpin green-pin"></div>
+                  <div className="note-text">Monday:<br/>Daily office commute 🏢</div>
+                </div>
+                <div className="hero-sticky-note note-green">
+                  <div className="pushpin yellow-pin"></div>
+                  <div className="note-text">Next week:<br/>Book car wash 🧽</div>
                 </div>
               </div>
+
             </div>
           </div>
         </div>
       </section>
+
 
       {/* ── WHO IS THIS FOR ─────────── */}
       <section id="about" className="lp-who reveal-on-scroll" aria-label="Who is CircleInd for?">
         <div className="lp-who-inner">
           <p className="lp-section-tag" style={{textAlign:'center', display:'block'}}>{t.whoTitle}</p>
           <h2 className="lp-section-title">{t.whoSub}</h2>
-          <div className="lp-who-grid bento-horizontal-list" role="list" ref={whoScrollRef}>
+          <div className="pinned-cards-board" role="list" ref={whoScrollRef}>
+            {/* Background dashed line */}
+            <svg className="board-dashed-line" viewBox="0 0 1000 200" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M 0,100 C 250,200 750,0 1000,100" fill="none" stroke="#d1d5db" strokeWidth="2" strokeDasharray="10, 10" />
+            </svg>
+            
             {t.whoCards.map((c, i) => (
-              <article key={i} className={`lp-why-card bento-h-${i}`} role="listitem">
-                  <div className="bento-content">
-                    <h3 className="lp-why-title">{c.title}</h3>
-                    <p className="lp-why-desc">{c.desc}</p>
-                  </div>
-                  <div className="lp-why-icon bento-icon" aria-hidden="true">{c.icon}</div>
-                </article>
+              <article key={i} className={`pinned-card card-angle-${i % 4}`} role="listitem">
+                <div className="push-pin">
+                  <div className={`pin-head pin-color-${i % 4}`}></div>
+                  <div className="pin-shadow"></div>
+                </div>
+                
+                <div className={`pinned-top bg-pastel-${i % 5}`}>
+                  <span className={`pinned-number text-color-${i % 5}`}>0{i + 1}</span>
+                  <div className="pinned-icon">{c.icon}</div>
+                </div>
+                
+                <div className="pinned-bottom">
+                  <h3 className="pinned-title">{c.title}</h3>
+                  <p className="pinned-desc">{c.desc}</p>
+                </div>
+              </article>
             ))}
           </div>
         </div>
@@ -327,46 +285,50 @@ const Landing = () => {
       
 
       {/* ── CTA ─────────────────────── */}
-      <section id="contact" className="lp-poster-cta" aria-label="Get started with CircleInd">
-        <div className="lp-poster-grid">
-          
-          {/* Top Left: Blue */}
-          <div className="lp-poster-cell bg-blue text-white">
-            <span className="lp-poster-pill">QUICK START</span>
-            <h2 className="lp-poster-title">{t.ctaTitle}</h2>
-          </div>
+      <section id="contact" className="lp-calendar-cta" aria-label="Get started with CircleInd">
+        <div className="calendar-bg-grid" aria-hidden="true">
+          {['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map(day => (
+            <div key={day} className="calendar-header">{day}</div>
+          ))}
+          {Array.from({ length: 35 }).map((_, i) => (
+            <div key={i} className="calendar-cell">
+              <span className="calendar-date">{i + 1}</span>
+              {i === 1 && <div className="calendar-scribble scribble-x">X</div>}
+              {i === 3 && <div className="calendar-scribble scribble-text">No Subscription</div>}
+              {i === 11 && <div className="calendar-scribble scribble-text">Cancel Anytime!</div>}
+              {i === 24 && <div className="calendar-scribble scribble-check">✓</div>}
+            </div>
+          ))}
+        </div>
 
-          {/* Top Right: White */}
-          <div className="lp-poster-cell bg-white text-dark">
-            <span className="lp-poster-pill pill-blue">GUARANTEES</span>
-            <ul className="lp-poster-list">
-              {['No subscription needed', 'Book in under 1 minute', 'Cancel anytime'].map((t2, i) => (
-                <li key={i}><CheckCircle size={24} className="lp-poster-check" aria-hidden="true" /> {t2}</li>
-              ))}
+        <div className="sticky-notes-cluster">
+          {/* Guarantees Note - Yellow */}
+          <div className="sticky-note note-yellow note-left">
+            <div className="push-pin"><div className="pin-head pin-red"></div><div className="pin-shadow"></div></div>
+            <div className="sticky-pill-container"><span className="sticky-pill pill-dark">GUARANTEES</span></div>
+            <ul className="sticky-list">
+              <li><CheckCircle size={20} className="sticky-icon"/> No subscription needed</li>
+              <li><CheckCircle size={20} className="sticky-icon"/> Book in under 1 minute</li>
+              <li><CheckCircle size={20} className="sticky-icon"/> Cancel anytime</li>
             </ul>
           </div>
 
-          {/* Bottom Left: White */}
-          <div className="lp-poster-cell bg-white text-dark">
-            <span className="lp-poster-pill pill-blue">THE PROMISE</span>
-            <p className="lp-poster-desc">{t.ctaSub}</p>
-          </div>
-
-          {/* Bottom Right: Blue */}
-          <div className="lp-poster-cell bg-blue text-white action-cell">
-            <h2 className="lp-poster-action-text">{t.ctaBtn}</h2>
-            <a
-              href={WA_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="lp-poster-btn"
-              title="Find a driver near you via WhatsApp"
-              aria-label="Find a Driver Near Me — Chat on WhatsApp"
-            >
-              <ArrowRight size={48} aria-hidden="true" />
+          {/* Main Note - Blue */}
+          <div className="sticky-note note-blue note-center">
+            <div className="push-pin"><div className="pin-head pin-blue"></div><div className="pin-shadow"></div></div>
+            <div className="sticky-pill-container"><span className="sticky-pill">QUICK START</span></div>
+            <h2 className="sticky-title">{t.ctaTitle}</h2>
+            <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="sticky-action-btn">
+              {t.ctaBtn} <ArrowRight size={24} aria-hidden="true" />
             </a>
           </div>
 
+          {/* Promise Note - Pink */}
+          <div className="sticky-note note-pink note-right">
+            <div className="push-pin"><div className="pin-head pin-yellow"></div><div className="pin-shadow"></div></div>
+            <div className="sticky-pill-container"><span className="sticky-pill pill-dark">THE PROMISE</span></div>
+            <p className="sticky-desc text-dark">{t.ctaSub}</p>
+          </div>
         </div>
       </section>
 

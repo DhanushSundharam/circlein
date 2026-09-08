@@ -19,15 +19,28 @@
   /* No shadow on hover for flat design */
 }
 
-.navbar > .container {
+.navbar-container {
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 32px;
+  gap: 16px;
   padding: 0;
   width: 100%;
   max-width: 1400px;
+}
+.navbar-left, .navbar-right {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+.navbar-right {
+  justify-content: flex-end;
+}
+.navbar-center {
+  flex: 2;
+  display: flex;
+  justify-content: center;
 }
 
 /* Brand */
@@ -56,20 +69,18 @@
 .nav-link {
   font-size: 0.9rem;
   font-weight: 500;
-  color: var(--text-secondary);
+  color: #6b7280;
   text-decoration: none;
   padding: 8px 16px;
   border-radius: var(--radius-full);
-  transition: all var(--transition-fast);
+  transition: color 0.2s ease;
   white-space: nowrap;
 }
 .nav-link:hover {
-  color: #8b5cf6;
-  background: hsla(258, 90%, 66%, 0.08);
+  color: #111827;
 }
 .nav-link-active {
-  color: #8b5cf6 !important;
-  background: hsla(258, 90%, 66%, 0.12) !important;
+  color: #111827 !important;
   font-weight: 600;
 }
 
