@@ -142,9 +142,51 @@
 
 @media (max-width: 768px) {
   .legal-container {
-    padding-top: 60px;
+    padding-top: 100px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
+  
+  .sub-nav-links {
+    gap: 20px;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 12px;
+    margin-bottom: 32px;
+  }
+  
+  .sub-nav-links::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .legal-container .sub-nav-links a {
+    font-size: 1.05rem;
+    padding-bottom: 11px;
+    margin-bottom: -13px;
+  }
+
   .legal-container h1 {
-    font-size: 1.75rem;
+    font-size: 2rem;
+    margin-bottom: 16px;
+  }
+
+  .legal-container h2 {
+    font-size: 1.4rem;
+    margin-top: 32px;
+    margin-bottom: 16px;
+  }
+  
+  .legal-container p, 
+  .legal-container li {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+  
+  .last-updated {
+    font-size: 0.9rem;
+    margin-bottom: 32px;
   }
 }
