@@ -73,9 +73,9 @@ const Navbar = ({ user, setUser }) => {
       <div className="container navbar-container">
         {/* Left: Brand */}
         <div className="navbar-left">
-          <Link to="/" className="navbar-brand flex items-center" style={{ textDecoration: 'none', gap: '6px' }}>
-            <Logo size={26} />
-            <h2 style={{ fontFamily: "'Outfit', sans-serif", fontSize: '1.4rem', letterSpacing: '-0.02em', margin: 0, display: 'flex', alignItems: 'center' }}>
+          <Link to="/" className="navbar-brand flex items-center" style={{ textDecoration: 'none', gap: '8px' }}>
+            <Logo size={36} />
+            <h2 style={{ fontFamily: "'Outfit', sans-serif", fontSize: '1.8rem', letterSpacing: '-0.02em', margin: 0, display: 'flex', alignItems: 'center' }}>
               <span style={{color: '#8b5cf6', fontWeight: '500'}}>Circle</span>
               <span style={{color: '#111827', fontWeight: '600'}}>Ind</span>
             </h2>
