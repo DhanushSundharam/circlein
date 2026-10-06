@@ -12,6 +12,7 @@ const NAV_LINKS = [
   { label: 'Our Team',  href: '/team'      },
   { label: 'FAQ',       href: '/faq'       },
   { label: 'Blog',      href: '/blog'      },
+  { label: 'Support',   href: '/support'   },
   { label: 'Contact',   href: '/#contact'  },
 ];
 
@@ -72,11 +73,11 @@ const Navbar = ({ user, setUser }) => {
       <div className="container navbar-container">
         {/* Left: Brand */}
         <div className="navbar-left">
-          <Link to="/" className="navbar-brand flex items-center gap-sm" style={{textDecoration: 'none'}}>
-            <Logo size={30} />
-            <h2 style={{ fontSize: '1.5rem', letterSpacing: '-0.02em', fontWeight: '700', margin: 0 }}>
-              <span style={{color: '#8b5cf6'}}>Circle</span>
-              <span style={{color: '#111827'}}>Ind.</span>
+          <Link to="/" className="navbar-brand flex items-center" style={{ textDecoration: 'none', gap: '6px' }}>
+            <Logo size={26} />
+            <h2 style={{ fontFamily: "'Outfit', sans-serif", fontSize: '1.4rem', letterSpacing: '-0.02em', margin: 0, display: 'flex', alignItems: 'center' }}>
+              <span style={{color: '#8b5cf6', fontWeight: '500'}}>Circle</span>
+              <span style={{color: '#111827', fontWeight: '600'}}>Ind</span>
             </h2>
           </Link>
         </div>

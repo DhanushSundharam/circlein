@@ -15,15 +15,15 @@ const Footer = ({ lang, setLang }) => {
           <Link to="/team">About</Link>
           <Link to="/services">Services</Link>
           <Link to="/whyus">Why Us</Link>
-          <Link to="#">Terms of Use</Link>
-          <Link to="#">Privacy Policy</Link>
-          <Link to="#">Cookie Policy</Link>
+          <Link to="/terms">Terms of Use</Link>
+          <Link to="/privacy">Privacy Policy</Link>
+          <Link to="/privacy">Cookie Policy</Link>
         </div>
       </div>
       <div className="circle-footer-row bottom-row" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '24px' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          <div className="circle-footer-logo" style={{ fontSize: '1.75rem', fontWeight: '800', letterSpacing: '-0.5px', color: '#fff' }}>
-            <span>CircleInd</span>
+          <div className="circle-footer-logo" style={{ fontFamily: "'Outfit', sans-serif", fontSize: '1.75rem', letterSpacing: '-0.02em', margin: 0, display: 'flex', alignItems: 'center', gap: 0 }}>
+            <span style={{color: '#ffffff', fontWeight: '500'}}>Circle</span><span style={{color: '#ffffff', fontWeight: '600'}}>Ind</span>
           </div>
           <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
             <a href="#" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', transition: 'transform 0.2s ease' }} onMouseOver={e => e.currentTarget.style.transform = 'scale(1.05)'} onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}>

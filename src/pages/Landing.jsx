@@ -158,38 +158,87 @@ const Landing = () => {
 
       {/* ── HERO ────────────────────── */}
       <section id="home" className="lp-hero-new">
-        <div className="lp-hero-content reveal-on-scroll">
-          <div className="hero-eyebrow">HIRE VERIFIED DRIVERS</div>
-          <h1 className="hero-headline">
-            Your Car <br/>
-            Our Care <br/>
-            <span 
-              className="notion-pill"
-              style={{
-                '--pill-bg': PILL_COLORS[wordIndex].bg,
-                '--pill-dot': PILL_COLORS[wordIndex].dot
-              }}
-            >
-              <span key={wordIndex} className="rotating-text">{t.heroWords[wordIndex]}</span>
-            </span>
-          </h1>
-          <p className="hero-subheadline" itemProp="description">
-            {t.heroSub}
-          </p>
+        <div className="hero-container">
+          <div className="hero-left">
+            <div className="lp-hero-content reveal-on-scroll">
+              <div className="hero-eyebrow">HIRE VERIFIED DRIVERS</div>
+              <h1 className="hero-headline">
+                Your Car <br/>
+                Our Care <br/>
+                <span 
+                  className="notion-pill"
+                  style={{
+                    '--pill-bg': PILL_COLORS[wordIndex].bg,
+                    '--pill-dot': PILL_COLORS[wordIndex].dot
+                  }}
+                >
+                  <span key={wordIndex} className="rotating-text">{t.heroWords[wordIndex]}</span>
+                </span>
+              </h1>
+              <p className="hero-subheadline" itemProp="description">
+                {t.heroSub}
+              </p>
+            </div>
+            <div className="hero-badges-wrapper desktop-badges reveal-on-scroll" style={{ display: 'flex', alignItems: 'center', gap: '16px', marginTop: '30px', marginBottom: '40px', alignSelf: 'flex-start' }}>
+              <a href="#" aria-label="Get it on Google Play" style={{ display: 'block', height: '54px', transition: 'transform 0.2s ease' }} onMouseOver={e => e.currentTarget.style.transform='scale(1.05)'} onMouseOut={e => e.currentTarget.style.transform='scale(1)'}>
+                <img src="/playstore.svg" alt="Google Play Store Badge" style={{ height: '100%', width: 'auto' }} />
+              </a>
+              <a href={WA_LINK} target="_blank" rel="noopener noreferrer" style={{ 
+                height: '54px', 
+                display: 'flex', 
+                alignItems: 'center', 
+                padding: '0 28px', 
+                borderRadius: '100px', 
+                border: '1.5px solid #e5e7eb', 
+                color: '#1a1a1a', 
+                fontWeight: '600',
+                fontSize: '16px',
+                textDecoration: 'none',
+                background: '#ffffff',
+                transition: 'all 0.2s ease',
+                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)'
+              }} onMouseOver={e => {e.currentTarget.style.borderColor='#1a1a1a'; e.currentTarget.style.transform='translateY(-2px)'}} onMouseOut={e => {e.currentTarget.style.borderColor='#e5e7eb'; e.currentTarget.style.transform='translateY(0)'}}>
+                Book a Driver
+              </a>
+            </div>
+          </div>
+          <div className="hero-right">
+            <div className="hero-floating-mockups">
+              <img src="/DemoImage.png?v=3" alt="CircleInd App Driver Search" className="hero-phone-mockup phone-left" />
+              <img src="/homeshots.png?v=3" alt="CircleInd App Home Dashboard" className="hero-phone-mockup phone-center" />
+              <img src="/third_phone.png?v=3" alt="CircleInd App Services" className="hero-phone-mockup phone-right" />
+            </div>
+          </div>
+          
+          {/* Mobile badges duplicate (rendered below phones on mobile) */}
+          <div className="hero-badges-wrapper mobile-badges reveal-on-scroll" style={{ display: 'flex', alignItems: 'center', gap: '16px', marginTop: '10px', marginBottom: '20px', alignSelf: 'center' }}>
+            <a href="#" aria-label="Get it on Google Play" style={{ display: 'block', height: '54px', transition: 'transform 0.2s ease' }} onMouseOver={e => e.currentTarget.style.transform='scale(1.05)'} onMouseOut={e => e.currentTarget.style.transform='scale(1)'}>
+              <img src="/playstore.svg" alt="Google Play Store Badge" style={{ height: '100%', width: 'auto' }} />
+            </a>
+            <a href={WA_LINK} target="_blank" rel="noopener noreferrer" style={{ 
+              height: '54px', 
+              display: 'flex', 
+              alignItems: 'center', 
+              padding: '0 28px', 
+              borderRadius: '100px', 
+              border: '1.5px solid #e5e7eb', 
+              color: '#1a1a1a', 
+              fontWeight: '600',
+              fontSize: '16px',
+              textDecoration: 'none',
+              background: '#ffffff',
+              transition: 'all 0.2s ease',
+              boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)'
+            }} onMouseOver={e => {e.currentTarget.style.borderColor='#1a1a1a'; e.currentTarget.style.transform='translateY(-2px)'}} onMouseOut={e => {e.currentTarget.style.borderColor='#e5e7eb'; e.currentTarget.style.transform='translateY(0)'}}>
+              Book a Driver
+            </a>
+          </div>
+          
         </div>
 
         <div className="hero-arch-container">
           <div className="hero-arch-bg"></div>
-          
-          <div className="hero-input-wrapper floating-element-1">
-            <div className="hero-input-fake">
-              <MapPin size={20} color="#9ca3af" />
-              <span className="placeholder">Where is your car parked?</span>
-            </div>
-            <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="hero-btn-primary">
-              Book a Driver
-            </a>
-          </div>
+
 
           <div className="hero-mockup-window floating-element-2">
             <div className="mockup-header">
