@@ -177,7 +177,7 @@
 
 .hero-phone-mockup.phone-center {
   width: clamp(420px, 52vw, 800px);
-  right: -60px;
+  right: -80px;
   top: -40px;
   transform: none;
   z-index: 3;
@@ -185,7 +185,7 @@
 
 .hero-phone-mockup.phone-left {
   width: clamp(320px, 42vw, 600px);
-  left: -80px;
+  left: -60px;
   top: 80px;
   transform: rotate(-10deg);
   z-index: 1;
@@ -193,7 +193,7 @@
 
 .hero-phone-mockup.phone-right {
   width: clamp(320px, 42vw, 600px);
-  right: -140px;
+  right: -160px;
   top: 80px;
   transform: rotate(10deg);
   z-index: 1;
