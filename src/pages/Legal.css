@@ -22,7 +22,7 @@
   padding-bottom: 16px;
 }
 
-.sub-nav-links a {
+.legal-container .sub-nav-links a {
   color: #666;
   font-weight: 500;
   text-decoration: none;
@@ -33,13 +33,15 @@
   transition: all 0.2s ease;
 }
 
-.sub-nav-links a:hover {
+.legal-container .sub-nav-links a:hover {
   color: #1a1a1a;
+  text-decoration: none;
 }
 
-.sub-nav-links a.active {
+.legal-container .sub-nav-links a.active {
   color: #8b5cf6;
   border-bottom-color: #8b5cf6;
+  text-decoration: none;
 }
 
 .legal-container h1 {
